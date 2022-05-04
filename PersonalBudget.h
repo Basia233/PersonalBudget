@@ -14,23 +14,28 @@ class PersonalBudget
 {
     UserManager userManager;
     AncillaryMethods ancillaryMethods;
-    IncomeManager incomeManager;
-   // ExpenseManager expenseManager;
-   // const string NAZWA_PLIKU_Z_ADRESATAMI;
+    IncomeManager *incomeManager;
+   // ExpenseManager *expenseManager;
+    const string INCOMES_FILENAME;
+   // const string EXPENSES_FILENAME;
 
 public:
 
-   PersonalBudget(string usersFileName, string incomesFileName) :
-        userManager(usersFileName), incomeManager(incomesFileName)
+   PersonalBudget(string usersFileName, string incomesFileName, string expensesFileName) :
+        userManager(usersFileName), INCOMES_FILENAME(incomesFileName)//, EXPENSES_FILENAME(expenseFileName)
     {
-        //adresatMenadzer = NULL; // ustawiamy wskaznik na null, aby od poczatu wskazywal na zero, a nie przypadkowe miejsce w pamieci
+        //incomesManager = NULL;
+        //expenseManager = NULL; // ustawiamy wskaznik na null, aby od poczatu wskazywal na zero, a nie przypadkowe miejsce w pamieci
     };
 
     ~PersonalBudget()
     {
-        //delete adresatMenadzer;
-        //adresatMenadzer = NULL;
-    }87
+        //delete incomeManager;
+        //incomeManager = NULL;
+
+        //delete expenseManager;
+        //expenseManager = NULL;
+    }
 
     void userRegistration();
     void displayAllUsers();

@@ -16,11 +16,13 @@ void PersonalBudget::displayAllUsers()
 void PersonalBudget::userLogIn()
 {
     userManager.userLogIn();
-    userManager.getLoggedInUserId();
-    //if (userManager.czyUzytkownikJestZalogowany())
-    //{
-       // adresatMenadzer = new AdresatMenadzer(NAZWA_PLIKU_Z_ADRESATAMI, userManager.pobierzIdZalogowanegoUzytkownika());
-    //}
+   // userManager.getLoggedInUserId();
+
+    if (userManager.isUserLoggedIn())
+    {
+        incomeManager = new IncomeManager(INCOMES_FILENAME, userManager.getLoggedInUserId());
+        //expenseManager = new ExpenseManager(EXPENSES_FILENAME, userManager.getLoggedInUserId());
+    }
 }
 
 
@@ -33,8 +35,12 @@ void PersonalBudget::changePasswordOfLoggedInUser()
 void PersonalBudget::logOut()
 {
     userManager.logOut();
-   // delete adresatMenadzer;
-    //adresatMenadzer = NULL;
+
+    //delete incomeManager;
+    //incomeManager = NULL;
+
+    //delete expenseManager;
+    //expenseManager = NULL;
 }
 
 
@@ -43,9 +49,17 @@ bool PersonalBudget::isUserLoggedIn()
     userManager.isUserLoggedIn();
 }
 
+
 void PersonalBudget::addNewIncome()
 {
-    incomeManager.addNewIncome();
+    if(userManager.isUserLoggedIn())
+    {
+        incomeManager -> addNewIncome();
+    }
+    else
+        cout << "Aby dodac przychod nalezy sie najpierw zalogowac";
+    system("pause");
+
 }
 
 
