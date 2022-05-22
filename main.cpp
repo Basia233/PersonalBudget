@@ -36,10 +36,10 @@ int main()
 
             switch (choice)
             {
-          /*  case '1':
+           case '1':
                 personalBudget.addNewIncome();
                 break;
-            case '2':
+           /* case '2':
                 personalBudget.addNewExpense();
                 break;
             case '3':

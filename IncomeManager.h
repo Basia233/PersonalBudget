@@ -9,8 +9,9 @@
 
 #include "Income.h"
 #include "IncomesFile.h"
+#include "DatesManager.h"
 //#include "UserManager.h"
-//#include "AncillaryMethods.h"
+#include "AncillaryMethods.h"
 
 using namespace std;
 
@@ -19,7 +20,9 @@ class IncomeManager
     const int ID_OF_LOGGED_IN_USER;
     vector <Income> incomes;
     IncomesFile incomesFile;
-    //AncillaryMethods ancillaryMethods;
+    DatesManager datesManager;
+
+    AncillaryMethods ancillaryMethods;
 
     Income enterNewIncomeData();
     int getNewIncomeId();
@@ -30,7 +33,7 @@ public:
     IncomeManager(string incomesFileName, int idOfLoggedInUser)
     : incomesFile(incomesFileName), ID_OF_LOGGED_IN_USER(idOfLoggedInUser)
     {
-      // incomes = incomesFile.loadIncomesOfLoggedInUserFromFile(ID_OF_LOGGED_IN_USER);
+      incomes = incomesFile.loadIncomesOfLoggedInUserFromFile(ID_OF_LOGGED_IN_USER);
     };
 
     void addNewIncome();

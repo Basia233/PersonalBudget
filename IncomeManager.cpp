@@ -5,7 +5,7 @@ using namespace std;
 
 void IncomeManager::addNewIncome()
 {
-   Income income = enterNewIncomeData();
+    Income income = enterNewIncomeData();
 
     incomes.push_back(income);
 
@@ -18,39 +18,53 @@ void IncomeManager::addNewIncome()
 
 Income IncomeManager::enterNewIncomeData()
 {
-   Income income;
+    Income income;
 
     income.setUserId(ID_OF_LOGGED_IN_USER);
 
-    income.setTransactionId(getNewIncomeId());// do przetestowania, tutaj chyba trzeba pobrac idostatniej transakcji i zwiekszyc o 1
+   // int transactionId = getNewIncomeId();
+    //income.setTransactionId(transactionId);
+    income.setTransactionId(incomesFile.getIdOfLastIncome()+1);
+
 
     int date;
+    string dateString;
     string item;
     string amount;//lub float
-    char choiceDate;
+    char choice;
 
 
-    cout << "Czy podany przychod dotyczy dnia dzisiejszego? Wybierz T/N: ";
-    cin >> date;
+    cout << "Czy podany przychod dotyczy dnia dzisiejszego? Wybierz t/n: ";
+    cin >> choice;
 
-   if (choiceDate == 'T')
-   {
+    if (choice == 't')
+    {
+        income.setDate(datesManager.getCurrentDate());
+    }
+    else
+    {
+        cout << "Podaj date w formacie rrrr-mm-dd: " << endl;
+        cin.clear();
+        cin.sync();
+        dateString = ancillaryMethods.getSingleLine();
+        date = ancillaryMethods.convertDateFromStringToInt(dateString);
 
-      // income.setDate(.getCurrentDate)
-   }
-   else
-   {
-       cout << "Podaj date w formacie rrrr-mm-dd: ";
-       income.setDate(date);// wprowadz sprawdzanie daty
-   }
+        income.setDate(date);// wprowadz sprawdzanie daty
+    }
 
-
+    cin.clear();
+    cin.sync();
     cout << "Podaj zrodlo przychodu: ";
-    getline(cin, item);
+    item = ancillaryMethods.getSingleLine();
     income.setItem(item);
+
+
+    cin.clear();
+    cin.sync();
     cout << "Podaj kwote przychodu: ";
-    cin >> amount;
+    amount = ancillaryMethods.getSingleLine();
     income.setAmount(amount);
+
 
     return income;
 }

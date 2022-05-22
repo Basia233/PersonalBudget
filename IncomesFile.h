@@ -6,14 +6,15 @@
 
 #include "Markup.h"
 #include "Income.h"
-//#include "AncillaryMethods.h"
+#include "AncillaryMethods.h"
 #include "XMLFile.h"
 
 using namespace std;
 
 class IncomesFile : public XMLFile
 {
-   int idOfLastIncome = 0;
+   int idOfLastIncome;
+   AncillaryMethods ancillaryMethods;
 
 public:
     IncomesFile(string incomesFileName): XMLFile(incomesFileName)
@@ -22,6 +23,7 @@ public:
     };
 
   void addIncomeToFile(Income income);
+  int getIdOfLastIncome();
 
     vector <Income> loadIncomesOfLoggedInUserFromFile(int idOfLoggedInUser);
     /*vector <User> changePasswordOfLoggedInUser(int idOfLoggedInUser, vector <User> users);

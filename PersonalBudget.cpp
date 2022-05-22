@@ -16,7 +16,6 @@ void PersonalBudget::displayAllUsers()
 void PersonalBudget::userLogIn()
 {
     userManager.userLogIn();
-   // userManager.getLoggedInUserId();
 
     if (userManager.isUserLoggedIn())
     {
@@ -36,8 +35,8 @@ void PersonalBudget::logOut()
 {
     userManager.logOut();
 
-    //delete incomeManager;
-    //incomeManager = NULL;
+    delete incomeManager;
+    incomeManager = NULL;
 
     //delete expenseManager;
     //expenseManager = NULL;
@@ -58,6 +57,7 @@ void PersonalBudget::addNewIncome()
     }
     else
         cout << "Aby dodac przychod nalezy sie najpierw zalogowac";
+
     system("pause");
 
 }

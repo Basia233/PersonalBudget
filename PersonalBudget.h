@@ -24,14 +24,14 @@ public:
    PersonalBudget(string usersFileName, string incomesFileName, string expensesFileName) :
         userManager(usersFileName), INCOMES_FILENAME(incomesFileName)//, EXPENSES_FILENAME(expenseFileName)
     {
-        //incomesManager = NULL;
-        //expenseManager = NULL; // ustawiamy wskaznik na null, aby od poczatu wskazywal na zero, a nie przypadkowe miejsce w pamieci
+        incomeManager = NULL;
+        //expenseManager = NULL;
     };
 
     ~PersonalBudget()
     {
-        //delete incomeManager;
-        //incomeManager = NULL;
+        delete incomeManager;
+        incomeManager = NULL;
 
         //delete expenseManager;
         //expenseManager = NULL;
