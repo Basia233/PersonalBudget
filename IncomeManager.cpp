@@ -22,9 +22,9 @@ Income IncomeManager::enterNewIncomeData()
 
     income.setUserId(ID_OF_LOGGED_IN_USER);
 
-   // int transactionId = getNewIncomeId();
-    //income.setTransactionId(transactionId);
-    income.setTransactionId(incomesFile.getIdOfLastIncome()+1);
+   //int transactionId = getNewIncomeId();
+   //income.setTransactionId(transactionId);
+ income.setTransactionId(incomesFile.getIdOfLastIncome()+1);
 
 
     int date;
