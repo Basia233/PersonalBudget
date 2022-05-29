@@ -18,6 +18,10 @@ public:
 //DatesManager();
 
    int getCurrentDate();
+   bool checkDate(string enteredDate);
+   bool checkMinDate(string dateString);
+   bool checkMaxDate(string dateString);
+   int getNumberOfDaysOfMonth(int month, int year);
 
 };
 

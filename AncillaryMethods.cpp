@@ -74,7 +74,7 @@ char AncillaryMethods::getCharacter()
 string AncillaryMethods::convertDateFromIntToString(int number)
 {
     string stringDate = intToStringConversion(number);
-    stringDate.insert (4,"-");
+    stringDate.insert(4,"-");
     stringDate.insert(7,"-");
 
     return stringDate;
@@ -83,8 +83,8 @@ string AncillaryMethods::convertDateFromIntToString(int number)
 
 int AncillaryMethods::convertDateFromStringToInt(string stringDate)
 {
-    int intDate =  0;
-    stringDate.erase (4,1);
+    int intDate = 0;
+    stringDate.erase(4,1);
     stringDate.erase(6,1);
 
     intDate = stringToIntConversion(stringDate);

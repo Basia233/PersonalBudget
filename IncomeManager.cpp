@@ -22,9 +22,9 @@ Income IncomeManager::enterNewIncomeData()
 
     income.setUserId(ID_OF_LOGGED_IN_USER);
 
-   //int transactionId = getNewIncomeId();
-   //income.setTransactionId(transactionId);
- income.setTransactionId(incomesFile.getIdOfLastIncome()+1);
+    int transactionId = getNewIncomeId();
+    income.setTransactionId(transactionId);
+    //income.setTransactionId(incomesFile.getIdOfLastIncome()+1);
 
 
     int date;
@@ -47,9 +47,17 @@ Income IncomeManager::enterNewIncomeData()
         cin.clear();
         cin.sync();
         dateString = ancillaryMethods.getSingleLine();
+
+        if(datesManager.checkDate(dateString)==0)
+        {
+            cout << "Data jest niepoprawna" << endl;
+            cout << "Podaj date z zakresu od 2000-01-01 do ostatniego dnia biezacego miesiaca: ";
+            cin >> dateString;
+        }
+
         date = ancillaryMethods.convertDateFromStringToInt(dateString);
 
-        income.setDate(date);// wprowadz sprawdzanie daty
+        income.setDate(date);
     }
 
     cin.clear();

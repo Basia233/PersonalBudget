@@ -39,3 +39,80 @@ int DatesManager::getCurrentDate()
 }
 
 
+//data od 01.01.2000 do ostatniego dnia biezacego miesiaca
+bool DatesManager::checkMinDate(string dateString)
+{
+    const int minDate = 20000101;
+    int date = ancillaryMethods.convertDateFromStringToInt(dateString);
+
+    if (date < minDate)
+        return false;
+    else
+        return true;
+}
+
+
+bool DatesManager::checkMaxDate(string dateString)
+{
+    SYSTEMTIME st;
+    GetLocalTime(&st);
+    int currentMonth = st.wMonth;
+    int currentYear = st.wYear;
+    int lastDayOfMonth = getNumberOfDaysOfMonth(currentMonth, currentYear);
+
+    string date = ancillaryMethods.intToStringConversion(currentYear)
+                + ancillaryMethods.intToStringConversion(currentMonth)
+                + ancillaryMethods.intToStringConversion(lastDayOfMonth);
+
+    int dateToInt = ancillaryMethods.stringToIntConversion(date);
+
+    int enteredDate = ancillaryMethods.convertDateFromStringToInt(dateString);
+
+
+    if (enteredDate > dateToInt)
+        return false;
+    else
+        return true;
+}
+
+
+bool DatesManager::checkDate(string enteredDate)
+{
+    if ((checkMinDate(enteredDate) == 0) || (checkMaxDate(enteredDate) == 0))
+        return false;
+    else
+        return true;
+}
+
+
+/*
+bool DatesManager::checkDateFormat(string enteredDate)
+{
+    int date = ancillaryMethods.
+
+    // do sprawdzenia format daty (czy sa zera + czy dobre miesiace czy dni od 1 do ostatniego dnia mesiaca)
+}
+
+*/
+
+int DatesManager::getNumberOfDaysOfMonth(int month, int year)
+{
+   int numberOfDays =0;
+
+   if (month == 4 || month == 6 || month == 9 || month == 11)
+         numberOfDays = 30;
+
+    else if (month == 2)
+    {
+        if((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+            numberOfDays = 29;
+        else
+           numberOfDays = 28;
+    }
+
+    else
+        numberOfDays = 31;
+
+   return numberOfDays;
+
+}
