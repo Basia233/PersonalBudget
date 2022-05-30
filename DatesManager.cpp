@@ -60,12 +60,18 @@ bool DatesManager::checkMaxDate(string dateString)
     int currentYear = st.wYear;
     int lastDayOfMonth = getNumberOfDaysOfMonth(currentMonth, currentYear);
 
-    string date = ancillaryMethods.intToStringConversion(currentYear)
-                + ancillaryMethods.intToStringConversion(currentMonth)
-                + ancillaryMethods.intToStringConversion(lastDayOfMonth);
+    string year = ancillaryMethods.intToStringConversion(currentYear);
+    string month = ancillaryMethods.intToStringConversion(currentMonth);
+    string day = ancillaryMethods.intToStringConversion(lastDayOfMonth);
 
-    int dateToInt = ancillaryMethods.stringToIntConversion(date);
+    if (currentMonth < 10)
+    {
+       month = "0" + month;
+    }
 
+    string maxDate = year + month + day;
+
+    int dateToInt = ancillaryMethods.stringToIntConversion(maxDate);
     int enteredDate = ancillaryMethods.convertDateFromStringToInt(dateString);
 
 
@@ -109,7 +115,6 @@ int DatesManager::getNumberOfDaysOfMonth(int month, int year)
         else
            numberOfDays = 28;
     }
-
     else
         numberOfDays = 31;
 
