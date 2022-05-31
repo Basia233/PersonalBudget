@@ -27,7 +27,7 @@ Income IncomeManager::enterNewIncomeData()
     //income.setTransactionId(incomesFile.getIdOfLastIncome()+1);
 
 
-    int date;
+    int date = 0;
     string dateString;
     string item;
     string amount;//lub float
@@ -40,25 +40,27 @@ Income IncomeManager::enterNewIncomeData()
     if (choice == 't')
     {
         income.setDate(datesManager.getCurrentDate());
+        //cout << date << endl;
     }
     else
     {
         cout << "Podaj date w formacie rrrr-mm-dd: " << endl;
         cin.clear();
         cin.sync();
+
         dateString = ancillaryMethods.getSingleLine();
 
-        if(datesManager.checkDate(dateString)==0)
+        while(datesManager.checkDate(dateString)==0)
         {
-            cout << "Data jest niepoprawna" << endl;
-            cout << "Podaj date z zakresu od 2000-01-01 do ostatniego dnia biezacego miesiaca: ";
+            cout << "Podana data jest poza zakresem." << endl;
+            cout << "Podaj date od 2000-01-01 do ostatniego dnia biezacego miesiaca: ";
             cin >> dateString;
         }
 
         date = ancillaryMethods.convertDateFromStringToInt(dateString);
-
         income.setDate(date);
     }
+
 
     cin.clear();
     cin.sync();
@@ -71,11 +73,25 @@ Income IncomeManager::enterNewIncomeData()
     cin.sync();
     cout << "Podaj kwote przychodu: ";
     amount = ancillaryMethods.getSingleLine();
+    amount = convertAmount(amount);
     income.setAmount(amount);
-
 
     return income;
 }
+
+
+
+string IncomeManager::convertAmount(string amount)
+{
+    for (int i = 0; i < amount.length(); i++)
+    {
+        if (amount[i] == ',')
+             amount[i] = '.';
+    }
+
+    return amount;
+}
+
 
 
 int IncomeManager::getNewIncomeId()

@@ -38,6 +38,7 @@ public:
 
     void addNewIncome();
     int getLoggedInUserId();// getter
+    string convertAmount(string amount);
     /*void displayAllUsers();
     void changePasswordOfLoggedInUser();
     void logOut();

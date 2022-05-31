@@ -21,6 +21,7 @@ public:
    bool checkDate(string enteredDate);
    bool checkMinDate(string dateString);
    bool checkMaxDate(string dateString);
+   bool isDateCorrect(string enteredDate);
    int getNumberOfDaysOfMonth(int month, int year);
 
 };

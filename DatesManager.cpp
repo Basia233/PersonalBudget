@@ -10,12 +10,14 @@ int DatesManager::getCurrentDate()
     int month = st.wMonth;
     int year = st.wYear;
     int currentIntegerDate = 0;
+    //cout << day << endl;
+    //cout << month << endl;
+    //cout << year << endl;
 
     string dayString;
     string monthString;
     string yearString;
     string currentDate = " ";
-
 
     dayString = ancillaryMethods.intToStringConversion(day);
     monthString = ancillaryMethods.intToStringConversion(month);
@@ -30,10 +32,9 @@ int DatesManager::getCurrentDate()
        monthString = "0" + monthString;
     }
 
-  // currentDate = yearString + "-" + monthString + "-" + dayString;
-
     currentDate = yearString + monthString + dayString;
     currentIntegerDate = atoi(currentDate.c_str());
+   // cout << currentIntegerDate;
 
  return currentIntegerDate;
 }
@@ -81,6 +82,47 @@ bool DatesManager::checkMaxDate(string dateString)
         return true;
 }
 
+/*
+bool DatesManager::isDateCorrect(string enteredDate)
+{
+   // string yearString = enteredDate.substr(0,4);
+    //string monthString = enteredDate.substr(5,2);
+    //string dayString = enteredDate.substr(8,2);
+    string yearString;
+    string monthString;
+    string dayString;
+
+    stringstream dateString(enteredDate);
+    getline(dateString, yearString, '-');
+    getline(dateString, monthString, '-');
+    getline(dateString, dayString, '-');
+
+    int year = atoi(yearString.c_str());
+    int month = atoi(monthString.c_str());
+    int day = atoi(dayString.c_str());
+
+    if(month < 10 && monthString[0]!='0')
+    {
+        monthString.insert(0,"0");
+
+    }
+
+
+    if(day < 10 && dayString[0]!='0')
+    {
+        dayString.insert(0,"0");
+
+    }
+
+    if(month < 1 || month > 12)
+        return false;
+
+    if(day < 1 || day > getNumberOfDaysOfMonth(month, year))
+        return false;
+
+    return true;
+}
+*/
 
 bool DatesManager::checkDate(string enteredDate)
 {
@@ -90,16 +132,6 @@ bool DatesManager::checkDate(string enteredDate)
         return true;
 }
 
-
-/*
-bool DatesManager::checkDateFormat(string enteredDate)
-{
-    int date = ancillaryMethods.
-
-    // do sprawdzenia format daty (czy sa zera + czy dobre miesiace czy dni od 1 do ostatniego dnia mesiaca)
-}
-
-*/
 
 int DatesManager::getNumberOfDaysOfMonth(int month, int year)
 {
