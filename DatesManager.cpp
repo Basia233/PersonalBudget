@@ -10,9 +10,6 @@ int DatesManager::getCurrentDate()
     int month = st.wMonth;
     int year = st.wYear;
     int currentIntegerDate = 0;
-    //cout << day << endl;
-    //cout << month << endl;
-    //cout << year << endl;
 
     string dayString;
     string monthString;
@@ -34,17 +31,19 @@ int DatesManager::getCurrentDate()
 
     currentDate = yearString + monthString + dayString;
     currentIntegerDate = atoi(currentDate.c_str());
-   // cout << currentIntegerDate;
 
  return currentIntegerDate;
 }
 
 
 //data od 01.01.2000 do ostatniego dnia biezacego miesiaca
-bool DatesManager::checkMinDate(string dateString)
+bool DatesManager::checkMinDate(string enteredDate)
 {
     const int minDate = 20000101;
-    int date = ancillaryMethods.convertDateFromStringToInt(dateString);
+
+    string dateString = addZeroToMonthAndDay(enteredDate);
+    cout << "min " << dateString <<endl;
+    int date = atoi(dateString.c_str());
 
     if (date < minDate)
         return false;
@@ -53,7 +52,7 @@ bool DatesManager::checkMinDate(string dateString)
 }
 
 
-bool DatesManager::checkMaxDate(string dateString)
+bool DatesManager::checkMaxDate(string enteredDate)
 {
     SYSTEMTIME st;
     GetLocalTime(&st);
@@ -71,23 +70,22 @@ bool DatesManager::checkMaxDate(string dateString)
     }
 
     string maxDate = year + month + day;
+    int maxDateInt = atoi(maxDate.c_str());
 
-    int dateToInt = ancillaryMethods.stringToIntConversion(maxDate);
-    int enteredDate = ancillaryMethods.convertDateFromStringToInt(dateString);
+    string dateString = addZeroToMonthAndDay(enteredDate);
+    cout << "max " << dateString <<endl;
+    int dateInt = atoi(dateString.c_str());
 
 
-    if (enteredDate > dateToInt)
+    if (dateInt > maxDateInt)
         return false;
     else
         return true;
 }
 
-/*
-bool DatesManager::isDateCorrect(string enteredDate)
+
+string DatesManager::addZeroToMonthAndDay(string enteredDate)
 {
-   // string yearString = enteredDate.substr(0,4);
-    //string monthString = enteredDate.substr(5,2);
-    //string dayString = enteredDate.substr(8,2);
     string yearString;
     string monthString;
     string dayString;
@@ -97,32 +95,32 @@ bool DatesManager::isDateCorrect(string enteredDate)
     getline(dateString, monthString, '-');
     getline(dateString, dayString, '-');
 
-    int year = atoi(yearString.c_str());
     int month = atoi(monthString.c_str());
     int day = atoi(dayString.c_str());
 
     if(month < 10 && monthString[0]!='0')
     {
-        monthString.insert(0,"0");
-
+       monthString = "0" + monthString;
     }
 
 
     if(day < 10 && dayString[0]!='0')
     {
-        dayString.insert(0,"0");
-
+        dayString = "0" + dayString;
     }
 
-    if(month < 1 || month > 12)
+    string goodDateFormat = yearString + monthString + dayString;
+    cout <<goodDateFormat << endl;
+
+ /*   if(month < 1 || month > 12)
         return false;
 
     if(day < 1 || day > getNumberOfDaysOfMonth(month, year))
-        return false;
+        return false;*/
 
-    return true;
+    return goodDateFormat;
 }
-*/
+
 
 bool DatesManager::checkDate(string enteredDate)
 {

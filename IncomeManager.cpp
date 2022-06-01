@@ -40,7 +40,6 @@ Income IncomeManager::enterNewIncomeData()
     if (choice == 't')
     {
         income.setDate(datesManager.getCurrentDate());
-        //cout << date << endl;
     }
     else
     {
@@ -56,8 +55,10 @@ Income IncomeManager::enterNewIncomeData()
             cout << "Podaj date od 2000-01-01 do ostatniego dnia biezacego miesiaca: ";
             cin >> dateString;
         }
+        cout << "po petli " <<dateString << endl;
 
-        date = ancillaryMethods.convertDateFromStringToInt(dateString);
+        date = atoi(datesManager.addZeroToMonthAndDay(dateString).c_str());
+        cout << "po konwersji " << date << endl;
         income.setDate(date);
     }
 

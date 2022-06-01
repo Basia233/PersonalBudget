@@ -87,7 +87,7 @@ int AncillaryMethods::convertDateFromStringToInt(string stringDate)
     stringDate.erase(4,1);
     stringDate.erase(6,1);
 
-    intDate = atoi(stringDate.c_str());
+    intDate = stringToIntConversion(stringDate);
 
     return intDate;
 }

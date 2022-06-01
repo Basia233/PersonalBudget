@@ -19,9 +19,9 @@ public:
 
    int getCurrentDate();
    bool checkDate(string enteredDate);
-   bool checkMinDate(string dateString);
-   bool checkMaxDate(string dateString);
-   bool isDateCorrect(string enteredDate);
+   bool checkMinDate(string enteredDate);
+   bool checkMaxDate(string enteredDate);
+   string addZeroToMonthAndDay(string enteredDate);
    int getNumberOfDaysOfMonth(int month, int year);
 
 };
