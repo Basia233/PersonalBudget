@@ -36,13 +36,12 @@ int DatesManager::getCurrentDate()
 }
 
 
-//data od 01.01.2000 do ostatniego dnia biezacego miesiaca
+
 bool DatesManager::checkMinDate(string enteredDate)
 {
     const int minDate = 20000101;
 
     string dateString = addZeroToMonthAndDay(enteredDate);
-    cout << "min " << dateString <<endl;
     int date = atoi(dateString.c_str());
 
     if (date < minDate)
@@ -73,7 +72,6 @@ bool DatesManager::checkMaxDate(string enteredDate)
     int maxDateInt = atoi(maxDate.c_str());
 
     string dateString = addZeroToMonthAndDay(enteredDate);
-    cout << "max " << dateString <<endl;
     int dateInt = atoi(dateString.c_str());
 
 
@@ -82,6 +80,29 @@ bool DatesManager::checkMaxDate(string enteredDate)
     else
         return true;
 }
+
+
+
+bool DatesManager::checkNumberOfDaysAndMonth(string enteredDate)
+{
+    string yearString, monthString, dayString;
+
+    stringstream dateString(enteredDate);
+    getline(dateString, yearString, '-');
+    getline(dateString, monthString, '-');
+    getline(dateString, dayString, '-');
+
+    int year = atoi(yearString.c_str());
+    int month = atoi(monthString.c_str());
+    int day = atoi(dayString.c_str());
+
+    if(month < 1 || month > 12)
+        return false;
+
+    if(day < 1 || day > getNumberOfDaysOfMonth(month, year))
+        return false;
+}
+
 
 
 string DatesManager::addZeroToMonthAndDay(string enteredDate)
@@ -103,32 +124,26 @@ string DatesManager::addZeroToMonthAndDay(string enteredDate)
        monthString = "0" + monthString;
     }
 
-
     if(day < 10 && dayString[0]!='0')
     {
         dayString = "0" + dayString;
     }
 
-    string goodDateFormat = yearString + monthString + dayString;
-    cout <<goodDateFormat << endl;
+    string correctDateFormat = yearString + monthString + dayString;
 
- /*   if(month < 1 || month > 12)
-        return false;
-
-    if(day < 1 || day > getNumberOfDaysOfMonth(month, year))
-        return false;*/
-
-    return goodDateFormat;
+    return correctDateFormat;
 }
+
 
 
 bool DatesManager::checkDate(string enteredDate)
 {
-    if ((checkMinDate(enteredDate) == 0) || (checkMaxDate(enteredDate) == 0))
+    if ((checkMinDate(enteredDate) == 0) || (checkMaxDate(enteredDate) == 0) || (checkNumberOfDaysAndMonth(enteredDate) == 0))
         return false;
     else
         return true;
 }
+
 
 
 int DatesManager::getNumberOfDaysOfMonth(int month, int year)
