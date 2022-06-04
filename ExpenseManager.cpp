@@ -1,30 +1,29 @@
-#include "IncomeManager.h"
+#include "ExpenseManager.h"
 
 using namespace std;
 
 
-void IncomeManager::addNewIncome()
+void ExpenseManager::addNewExpense()
 {
-    Income income = enterNewIncomeData();
+    Expense expense = enterNewExpenseData();
 
-    incomes.push_back(income);
+    expenses.push_back(expense);
 
-    incomesFile.addIncomeToFile(income);
+    expensesFile.addExpenseToFile(expense);
 
-    cout << endl << "Przychod zostal dodany" << endl << endl;
+    cout << endl << "Wydatek zostal dodany" << endl << endl;
     system("pause");
 }
 
 
-Income IncomeManager::enterNewIncomeData()
+Expense ExpenseManager::enterNewExpenseData()
 {
-    Income income;
+    Expense expense;
 
-    income.setUserId(ID_OF_LOGGED_IN_USER);
+    expense.setUserId(ID_OF_LOGGED_IN_USER);
 
-    int transactionId = getNewIncomeId();
-    income.setTransactionId(transactionId);
-    //income.setTransactionId(incomesFile.getIdOfLastIncome()+1);
+    int transactionId = getNewExpenseId();
+    expense.setTransactionId(transactionId);
 
 
     int date = 0;
@@ -34,12 +33,12 @@ Income IncomeManager::enterNewIncomeData()
     char choice;
 
 
-    cout << "Czy podany przychod dotyczy dnia dzisiejszego? Wybierz t/n: ";
+    cout << "Czy podany wydatek dotyczy dnia dzisiejszego? Wybierz t/n: ";
     cin >> choice;
 
     if (choice == 't')
     {
-        income.setDate(datesManager.getCurrentDate());
+        expense.setDate(datesManager.getCurrentDate());
     }
     else
     {
@@ -57,29 +56,29 @@ Income IncomeManager::enterNewIncomeData()
         }
 
         date = atoi(datesManager.addZeroToMonthAndDay(dateString).c_str());
-        income.setDate(date);
+        expense.setDate(date);
     }
 
 
     cin.clear();
     cin.sync();
-    cout << "Podaj zrodlo przychodu: ";
+    cout << "Podaj powod wydatku: ";
     item = ancillaryMethods.getSingleLine();
-    income.setItem(item);
+    expense.setItem(item);
 
 
     cin.clear();
     cin.sync();
-    cout << "Podaj kwote przychodu: ";
+    cout << "Podaj kwote wydatku: ";
     amount = ancillaryMethods.getSingleLine();
     amount = convertAmount(amount);
-    income.setAmount(amount);
+    expense.setAmount(amount);
 
-    return income;
+    return expense;
 }
 
 
-string IncomeManager::convertAmount(string amount)
+string ExpenseManager::convertAmount(string amount)
 {
     for (int i = 0; i < amount.length(); i++)
     {
@@ -91,16 +90,16 @@ string IncomeManager::convertAmount(string amount)
 }
 
 
-int IncomeManager::getNewIncomeId()
+int ExpenseManager::getNewExpenseId()
 {
-    if (incomes.empty() == true)
+    if (expenses.empty() == true)
         return 1;
     else
-        return incomes.back().getTransactionId() + 1;
+        return expenses.back().getTransactionId() + 1;
 }
 
 
-int IncomeManager::getLoggedInUserId()
+int ExpenseManager::getLoggedInUserId()
 {
     return ID_OF_LOGGED_IN_USER;
 }

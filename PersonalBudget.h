@@ -5,7 +5,7 @@
 
 #include "UserManager.h"
 #include "IncomeManager.h"
-//#include "ExpenseManager.h"
+#include "ExpenseManager.h"
 
 
 using namespace std;
@@ -15,17 +15,17 @@ class PersonalBudget
     UserManager userManager;
     AncillaryMethods ancillaryMethods;
     IncomeManager *incomeManager;
-   // ExpenseManager *expenseManager;
+    ExpenseManager *expenseManager;
     const string INCOMES_FILENAME;
-   // const string EXPENSES_FILENAME;
+    const string EXPENSES_FILENAME;
 
 public:
 
-   PersonalBudget(string usersFileName, string incomesFileName, string expensesFileName) :
-        userManager(usersFileName), INCOMES_FILENAME(incomesFileName)//, EXPENSES_FILENAME(expenseFileName)
+    PersonalBudget(string usersFileName, string incomesFileName, string expensesFileName) :
+        userManager(usersFileName), INCOMES_FILENAME(incomesFileName), EXPENSES_FILENAME(expensesFileName)
     {
         incomeManager = NULL;
-        //expenseManager = NULL;
+        expenseManager = NULL;
     };
 
     ~PersonalBudget()
@@ -33,8 +33,8 @@ public:
         delete incomeManager;
         incomeManager = NULL;
 
-        //delete expenseManager;
-        //expenseManager = NULL;
+        delete expenseManager;
+        expenseManager = NULL;
     }
 
     void userRegistration();
@@ -51,8 +51,8 @@ public:
     char selectOptionFromMainMenu();
     char selectOptionFromUserMenu();
 
-
     void addNewIncome();
+    void addNewExpense();
 };
 
 #endif

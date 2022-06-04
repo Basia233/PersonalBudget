@@ -1,5 +1,5 @@
-#ifndef INCOMEMANAGER_H
-#define INCOMEMANAGER_H
+#ifndef EXPENSEMANAGER_H
+#define EXPENSEMANAGER_H
 
 #include <iostream>
 #include <vector> //inkludujemy vector bo uzytkownicy beda zapisani w vectorze
@@ -7,35 +7,34 @@
 #include <fstream>
 #include <sstream> // konwersja int na string
 
-#include "Income.h"
-#include "IncomesFile.h"
+#include "Expense.h"
+#include "ExpensesFile.h"
 #include "DatesManager.h"
-//#include "UserManager.h"
 #include "AncillaryMethods.h"
 
 using namespace std;
 
-class IncomeManager
+class ExpenseManager
 {
     const int ID_OF_LOGGED_IN_USER;
-    vector <Income> incomes;
-    IncomesFile incomesFile;
+    vector <Expense> expenses;
+    ExpensesFile expensesFile;
     DatesManager datesManager;
     AncillaryMethods ancillaryMethods;
 
-    Income enterNewIncomeData();
-    int getNewIncomeId();
+    Expense enterNewExpenseData();
+    int getNewExpenseId();
 
 public:
 
-    IncomeManager(string incomesFileName, int idOfLoggedInUser)
-        : incomesFile(incomesFileName), ID_OF_LOGGED_IN_USER(idOfLoggedInUser)
+    ExpenseManager(string expensesFileName, int idOfLoggedInUser)
+        : expensesFile(expensesFileName), ID_OF_LOGGED_IN_USER(idOfLoggedInUser)
     {
-        incomes = incomesFile.loadIncomesOfLoggedInUserFromFile(ID_OF_LOGGED_IN_USER);
+        expenses = expensesFile.loadExpensesOfLoggedInUserFromFile(ID_OF_LOGGED_IN_USER);
     };
 
-    void addNewIncome();
-    int getLoggedInUserId();// getter
+    void addNewExpense();
+    int getLoggedInUserId();
     string convertAmount(string amount);
     /*void displayAllUsers();
     void changePasswordOfLoggedInUser();

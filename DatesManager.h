@@ -12,18 +12,18 @@ using namespace std;
 class DatesManager
 {
 
-AncillaryMethods ancillaryMethods;
+    AncillaryMethods ancillaryMethods;
 
 public:
 //DatesManager();
 
-   int getCurrentDate();
-   bool checkDate(string enteredDate);
-   bool checkMinDate(string enteredDate);
-   bool checkMaxDate(string enteredDate);
-   bool checkNumberOfDaysAndMonth(string enteredDate);
-   string addZeroToMonthAndDay(string enteredDate);
-   int getNumberOfDaysOfMonth(int month, int year);
+    int getCurrentDate();
+    bool checkDate(string enteredDate);
+    bool checkMinDate(string enteredDate);
+    bool checkMaxDate(string enteredDate);
+    bool checkNumberOfDaysAndMonth(string enteredDate);
+    string addZeroToMonthAndDay(string enteredDate);
+    int getNumberOfDaysOfMonth(int month, int year);
 
 };
 

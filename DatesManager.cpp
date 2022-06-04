@@ -26,13 +26,13 @@ int DatesManager::getCurrentDate()
     }
     if (month < 10 )
     {
-       monthString = "0" + monthString;
+        monthString = "0" + monthString;
     }
 
     currentDate = yearString + monthString + dayString;
     currentIntegerDate = atoi(currentDate.c_str());
 
- return currentIntegerDate;
+    return currentIntegerDate;
 }
 
 
@@ -65,7 +65,7 @@ bool DatesManager::checkMaxDate(string enteredDate)
 
     if (currentMonth < 10)
     {
-       month = "0" + month;
+        month = "0" + month;
     }
 
     string maxDate = year + month + day;
@@ -121,7 +121,7 @@ string DatesManager::addZeroToMonthAndDay(string enteredDate)
 
     if(month < 10 && monthString[0]!='0')
     {
-       monthString = "0" + monthString;
+        monthString = "0" + monthString;
     }
 
     if(day < 10 && dayString[0]!='0')
@@ -148,21 +148,21 @@ bool DatesManager::checkDate(string enteredDate)
 
 int DatesManager::getNumberOfDaysOfMonth(int month, int year)
 {
-   int numberOfDays =0;
+    int numberOfDays =0;
 
-   if (month == 4 || month == 6 || month == 9 || month == 11)
-         numberOfDays = 30;
+    if (month == 4 || month == 6 || month == 9 || month == 11)
+        numberOfDays = 30;
 
     else if (month == 2)
     {
         if((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
             numberOfDays = 29;
         else
-           numberOfDays = 28;
+            numberOfDays = 28;
     }
     else
         numberOfDays = 31;
 
-   return numberOfDays;
+    return numberOfDays;
 
 }

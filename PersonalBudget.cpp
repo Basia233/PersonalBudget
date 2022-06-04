@@ -20,7 +20,7 @@ void PersonalBudget::userLogIn()
     if (userManager.isUserLoggedIn())
     {
         incomeManager = new IncomeManager(INCOMES_FILENAME, userManager.getLoggedInUserId());
-        //expenseManager = new ExpenseManager(EXPENSES_FILENAME, userManager.getLoggedInUserId());
+        expenseManager = new ExpenseManager(EXPENSES_FILENAME, userManager.getLoggedInUserId());
     }
 }
 
@@ -38,8 +38,8 @@ void PersonalBudget::logOut()
     delete incomeManager;
     incomeManager = NULL;
 
-    //delete expenseManager;
-    //expenseManager = NULL;
+    delete expenseManager;
+    expenseManager = NULL;
 }
 
 
@@ -57,6 +57,20 @@ void PersonalBudget::addNewIncome()
     }
     else
         cout << "Aby dodac przychod nalezy sie najpierw zalogowac";
+
+    system("pause");
+
+}
+
+
+void PersonalBudget::addNewExpense()
+{
+    if(userManager.isUserLoggedIn())
+    {
+        expenseManager -> addNewExpense();
+    }
+    else
+        cout << "Aby dodac wydatek nalezy sie najpierw zalogowac";
 
     system("pause");
 

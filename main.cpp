@@ -36,21 +36,21 @@ int main()
 
             switch (choice)
             {
-           case '1':
+            case '1':
                 personalBudget.addNewIncome();
                 break;
-           /* case '2':
+            case '2':
                 personalBudget.addNewExpense();
                 break;
-            case '3':
-                personalBudget.showBalanceForCurrentMonth();
-                break;
-            case '4':
-                personalBudget.showBalanceForPreviousMonth();
-                break;
-            case '5':
-                personalBudget.showBalanceForSelectedPeriod();
-                break;*/
+            /*  case '3':
+                 personalBudget.showBalanceForCurrentMonth();
+                 break;
+             case '4':
+                 personalBudget.showBalanceForPreviousMonth();
+                 break;
+             case '5':
+                 personalBudget.showBalanceForSelectedPeriod();
+                 break;*/
             case '6':
                 personalBudget.changePasswordOfLoggedInUser();
                 break;
@@ -68,13 +68,13 @@ int main()
 
 
 
- // personalBudget.displayAllUsers();
-  // personalBudget.userRegistration(();
-   //personalBudget.userRegistration(();
- //personalBudget.displayAllUsers();
-   //personalBudget.userLogIn();
-  // personalBudget.changePasswordOfLoggedInUser();
-   //personalBudget.logOut();
+    // personalBudget.displayAllUsers();
+    // personalBudget.userRegistration(();
+    //personalBudget.userRegistration(();
+    //personalBudget.displayAllUsers();
+    //personalBudget.userLogIn();
+    // personalBudget.changePasswordOfLoggedInUser();
+    //personalBudget.logOut();
 
 
     return 0;
