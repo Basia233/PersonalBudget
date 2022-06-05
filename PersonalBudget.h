@@ -6,6 +6,7 @@
 #include "UserManager.h"
 #include "IncomeManager.h"
 #include "ExpenseManager.h"
+#include "BalanceManager.h"
 
 
 using namespace std;
@@ -16,6 +17,7 @@ class PersonalBudget
     AncillaryMethods ancillaryMethods;
     IncomeManager *incomeManager;
     ExpenseManager *expenseManager;
+    BalanceManager *balanceManager;
     const string INCOMES_FILENAME;
     const string EXPENSES_FILENAME;
 
@@ -53,6 +55,10 @@ public:
 
     void addNewIncome();
     void addNewExpense();
+    void displayAllIncomes();
+    void displayAllExpenses();
+    void showBalanceForCurrentMonth();
+
 };
 
 #endif

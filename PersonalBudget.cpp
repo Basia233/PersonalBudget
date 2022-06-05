@@ -21,6 +21,7 @@ void PersonalBudget::userLogIn()
     {
         incomeManager = new IncomeManager(INCOMES_FILENAME, userManager.getLoggedInUserId());
         expenseManager = new ExpenseManager(EXPENSES_FILENAME, userManager.getLoggedInUserId());
+        balanceManager = new BalanceManager();
     }
 }
 
@@ -40,6 +41,9 @@ void PersonalBudget::logOut()
 
     delete expenseManager;
     expenseManager = NULL;
+
+    delete balanceManager;
+    balanceManager = NULL;
 }
 
 
@@ -119,3 +123,29 @@ char PersonalBudget::selectOptionFromUserMenu()
     return choice;
 }
 
+
+void PersonalBudget::displayAllIncomes()
+{
+    if(userManager.isUserLoggedIn())
+    {
+        incomeManager -> displayAllIncomes();
+    }
+}
+
+
+void PersonalBudget::displayAllExpenses()
+{
+    if(userManager.isUserLoggedIn())
+    {
+        expenseManager -> displayAllExpenses();
+    }
+}
+
+
+void PersonalBudget::showBalanceForCurrentMonth()
+{
+    if(userManager.isUserLoggedIn())
+    {
+        balanceManager -> showBalanceForCurrentMonth(incomeManager -> getIncomesOfLoggedInUser(), expenseManager -> getExpensesOfLoggedInUser());
+    }
+}

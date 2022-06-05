@@ -91,6 +91,19 @@ string IncomeManager::convertAmount(string amount)
 }
 
 
+void IncomeManager::displayAllIncomes()
+{
+    for (int i=0; i<incomes.size(); i++)
+    {
+        cout << incomes[i].getUserId() << endl;
+        cout << incomes[i].getTransactionId() << endl;
+        cout << incomes[i].getDate() << endl;
+        cout << incomes[i].getItem() << endl;
+        cout << incomes[i].getAmount() << endl;
+    }
+}
+
+
 int IncomeManager::getNewIncomeId()
 {
     if (incomes.empty() == true)
@@ -103,4 +116,10 @@ int IncomeManager::getNewIncomeId()
 int IncomeManager::getLoggedInUserId()
 {
     return ID_OF_LOGGED_IN_USER;
+}
+
+
+vector <Income> IncomeManager::getIncomesOfLoggedInUser()
+{
+    return incomes;
 }

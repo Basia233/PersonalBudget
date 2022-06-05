@@ -42,10 +42,10 @@ int main()
             case '2':
                 personalBudget.addNewExpense();
                 break;
-            /*  case '3':
+             case '3':
                  personalBudget.showBalanceForCurrentMonth();
                  break;
-             case '4':
+            /*  case '4':
                  personalBudget.showBalanceForPreviousMonth();
                  break;
              case '5':
@@ -68,7 +68,7 @@ int main()
 
 
 
-    // personalBudget.displayAllUsers();
+    //personalBudget.displayAllUsers();
     // personalBudget.userRegistration(();
     //personalBudget.userRegistration(();
     //personalBudget.displayAllUsers();
