@@ -24,6 +24,8 @@ public:
     bool checkNumberOfDaysAndMonth(string enteredDate);
     string addZeroToMonthAndDay(string enteredDate);
     int getNumberOfDaysOfMonth(int month, int year);
+    int getDateOfFirstDayOfCurrentMonth();
+    int getDateOfLastDayOfCurrentMonth();
 
 };
 

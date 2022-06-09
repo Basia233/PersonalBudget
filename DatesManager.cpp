@@ -166,3 +166,45 @@ int DatesManager::getNumberOfDaysOfMonth(int month, int year)
     return numberOfDays;
 
 }
+
+
+int DatesManager::getDateOfFirstDayOfCurrentMonth()
+{
+    int currentDate = 0;
+    string currentStringDate = "";
+
+
+    currentDate = getCurrentDate();
+    currentStringDate = ancillaryMethods.intToStringConversion(currentDate);
+
+    string firstDayOfCurrentMonth = currentStringDate.replace(6, 2, "01");
+
+    int dateOfFirstDayOfCurrentMonth = atoi(firstDayOfCurrentMonth.c_str());
+
+    return dateOfFirstDayOfCurrentMonth;
+}
+
+
+int DatesManager::getDateOfLastDayOfCurrentMonth()
+{
+    SYSTEMTIME st;
+    GetLocalTime(&st);
+    int currentMonth = st.wMonth;
+    int currentYear = st.wYear;
+    int lastDayOfMonth = getNumberOfDaysOfMonth(currentMonth, currentYear);
+
+    string year = ancillaryMethods.intToStringConversion(currentYear);
+    string month = ancillaryMethods.intToStringConversion(currentMonth);
+    string day = ancillaryMethods.intToStringConversion(lastDayOfMonth);
+
+    if (currentMonth < 10)
+    {
+        month = "0" + month;
+    }
+
+    string lastDayString = year + month + day;
+    int dateOfLastDayOfMonth = atoi(lastDayString.c_str());
+
+    return dateOfLastDayOfMonth;
+
+}
