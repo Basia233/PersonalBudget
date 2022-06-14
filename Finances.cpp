@@ -43,10 +43,12 @@ int Finances::getDate()
     return date;
 }
 
+
 string Finances::getItem()
 {
     return item;
 }
+
 
 string Finances::getAmount()
 {

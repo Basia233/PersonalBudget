@@ -33,7 +33,7 @@ vector <Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int idOfLoggedInU
     Income income;
     vector <Income> incomes;
     CMarkup xml;
-    int userIdInFile;
+    int userIdInFile, date;
 
     bool fileExsist = xml.Load("Incomes.xml");
 
@@ -47,18 +47,24 @@ vector <Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int idOfLoggedInU
             xml.IntoElem();
             xml.FindElem("UserID");
 
-            income.setUserId(atoi(xml.GetData().c_str()));
-            xml.FindElem("IncomeId");
-            income.setTransactionId(atoi(xml.GetData().c_str()));
-            xml.FindElem("Date");
-            income.setDate(atoi(xml.GetData().c_str()));
-            xml.FindElem("Item");
-            income.setItem(xml.GetData());
-            xml.FindElem("Amount");
-            income.setAmount(xml.GetData());
-            xml.OutOfElem();
+            userIdInFile = atoi(xml.GetData().c_str());
 
-            incomes.push_back(income);
+            if (idOfLoggedInUser == userIdInFile)
+            {
+                income.setUserId(atoi(xml.GetData().c_str()));
+                xml.FindElem("IncomeId");
+                income.setTransactionId(atoi(xml.GetData().c_str()));
+                xml.FindElem("Date");
+                date = ancillaryMethods.convertDateFromStringToInt(xml.GetData());
+                income.setDate(date);
+                xml.FindElem("Item");
+                income.setItem(xml.GetData());
+                xml.FindElem("Amount");
+                income.setAmount(xml.GetData());
+
+                incomes.push_back(income);
+            }
+            xml.OutOfElem();
         }
     }
     return incomes;
