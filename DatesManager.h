@@ -26,6 +26,8 @@ public:
     int getNumberOfDaysOfMonth(int month, int year);
     int getDateOfFirstDayOfCurrentMonth();
     int getDateOfLastDayOfCurrentMonth();
+    int getDateOfFirstDayOfPreviousMonth();
+    int getDateOfLastDayOfPreviousMonth();
 
 };
 
