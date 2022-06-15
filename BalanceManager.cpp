@@ -78,3 +78,83 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
     system("pause");
 
 }
+
+
+
+void BalanceManager::showBalanceForPreviousMonth(vector <Income> incomes, vector <Expense> expenses)
+{
+    int dateOfFirstDayOfPreviousMonth = datesManager.getDateOfFirstDayOfPreviousMonth();
+    int dateOfLastDayOfPreviousMonth = datesManager.getDateOfLastDayOfPreviousMonth();
+    vector<Income> incomesForPreviousMonth;
+    vector<Expense> expensesForPreviousMonth;
+    float totalIncomes, totalExpenses;
+
+    system("cls");
+    cout << ">>> BILANS Z POPRZEDNIEGO MIESIACA <<<" << endl;
+    cout << endl;
+
+
+//PRZYCHODY
+
+    for(int i = 0; i < incomes.size(); i++)
+    {
+        if(incomes[i].getDate() >= dateOfFirstDayOfPreviousMonth && incomes[i].getDate() <= dateOfLastDayOfPreviousMonth)
+        {
+            incomesForPreviousMonth.push_back(incomes[i]);
+            totalIncomes += atof(incomes[i].getAmount().c_str());
+
+        }
+    }
+
+    sort(incomesForPreviousMonth.begin(),incomesForPreviousMonth.end());
+
+    cout << "Twoje PRZYCHODY w poprzednim miesiacu: " << endl;
+    cout << endl;
+
+    for (int i = 0; i < incomesForPreviousMonth.size(); i++)
+    {
+        cout << "Data: " << ancillaryMethods.convertDateFromIntToString(incomesForPreviousMonth[i].getDate()) << endl;
+        cout << "Opis: " << incomesForPreviousMonth[i].getItem() << endl;
+        cout << "Kwota: " << incomesForPreviousMonth[i].getAmount() << endl;
+        cout << endl;
+    }
+
+
+//WYDATKI
+
+    for(int i = 0; i < expenses.size(); i++)
+    {
+        if(expenses[i].getDate() <= dateOfLastDayOfPreviousMonth && expenses[i].getDate() >= dateOfFirstDayOfPreviousMonth)
+        {
+            expensesForPreviousMonth.push_back(expenses[i]);
+            totalExpenses += atof(expenses[i].getAmount().c_str());
+        }
+    }
+
+    sort(expensesForPreviousMonth.begin(),expensesForPreviousMonth.end());
+
+    cout << endl;
+    cout << "Twoje WYDATKI w poprzednim miesiacu: " << endl;
+    cout << endl;
+
+    for (int i = 0; i < expensesForPreviousMonth.size(); i++)
+    {
+        cout << "Data: " << ancillaryMethods.convertDateFromIntToString(expensesForPreviousMonth[i].getDate()) << endl;
+        cout << "Opis: " << expensesForPreviousMonth[i].getItem() << endl;
+        cout << "Kwota: " << expensesForPreviousMonth[i].getAmount() << endl;
+        cout << endl;
+    }
+
+
+//BILANS
+    cout << endl;
+    cout << "PODSUMOWANIE:" << endl;
+    cout << endl;
+
+    cout << "Suma przychodow w poprzednim miesiacu: " << totalIncomes << " zl" << endl;
+    cout << "Suma wydatkow w poprzednim miesiacu: " << totalExpenses << " zl" << endl;
+    cout << "Bilans dla poprzedniego miesiaca: " << totalIncomes - totalExpenses << " zl" <<endl;
+
+    system("pause");
+
+}

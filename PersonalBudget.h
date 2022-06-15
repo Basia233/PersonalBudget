@@ -55,9 +55,10 @@ public:
 
     void addNewIncome();
     void addNewExpense();
-    void displayAllIncomes();
-    void displayAllExpenses();
+    //void displayAllIncomes();
+    //void displayAllExpenses();
     void showBalanceForCurrentMonth();
+    void showBalanceForPreviousMonth();
 
 };
 

@@ -45,10 +45,10 @@ int main()
              case '3':
                  personalBudget.showBalanceForCurrentMonth();
                  break;
-            /*  case '4':
+             case '4':
                  personalBudget.showBalanceForPreviousMonth();
                  break;
-             case '5':
+            /* case '5':
                  personalBudget.showBalanceForSelectedPeriod();
                  break;*/
             case '6':
@@ -65,17 +65,6 @@ int main()
             }
         }
     }
-
-
-
-    //personalBudget.displayAllUsers();
-    // personalBudget.userRegistration(();
-    //personalBudget.userRegistration(();
-    //personalBudget.displayAllUsers();
-    //personalBudget.userLogIn();
-    // personalBudget.changePasswordOfLoggedInUser();
-    //personalBudget.logOut();
-
 
     return 0;
 }
