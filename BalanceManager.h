@@ -22,7 +22,7 @@ class BalanceManager
 public:
     void showBalanceForCurrentMonth(vector <Income> incomes, vector <Expense> expenses);
     void showBalanceForPreviousMonth(vector <Income> incomes, vector <Expense> expenses);
-    //void showBalanceForSelectedPeriod(vector <Income> incomes, vector <Expense> expenses);
+    void showBalanceForSelectedPeriod(vector <Income> incomes, vector <Expense> expenses);
 
 };
 

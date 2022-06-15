@@ -1,13 +1,14 @@
 #include "BalanceManager.h"
 
 
+//BIEZ¥CY MIESI¥C
 void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<Expense> expenses)
 {
     int dateOfFirstDayOfCurrentMonth = datesManager.getDateOfFirstDayOfCurrentMonth();
     int dateOfLastDayOfCurrentMonth = datesManager.getDateOfLastDayOfCurrentMonth();
     vector<Income> incomesForCurrentMonth;
     vector<Expense> expensesForCurrentMonth;
-    float totalIncomes, totalExpenses;
+    float totalIncomes = 0, totalExpenses= 0;
 
     system("cls");
     cout << ">>> BILANS Z BIEZACEGO MIESIACA <<<" << endl;
@@ -44,7 +45,7 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
 
     for(int i = 0; i < expenses.size(); i++)
     {
-        if(expenses[i].getDate() <= dateOfLastDayOfCurrentMonth && expenses[i].getDate() >= dateOfFirstDayOfCurrentMonth)
+        if(expenses[i].getDate() >= dateOfFirstDayOfCurrentMonth && expenses[i].getDate() <= dateOfLastDayOfCurrentMonth)
         {
             expensesForCurrentMonth.push_back(expenses[i]);
             totalExpenses += atof(expenses[i].getAmount().c_str());
@@ -71,8 +72,8 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
     cout << "PODSUMOWANIE:" << endl;
     cout << endl;
 
-    cout << "Suma przychodow dla biezacego miesiaca: " << totalIncomes << " zl" << endl;
-    cout << "Suma wydatkow dla biezacego miesiaca: " << totalExpenses << " zl" << endl;
+    cout << "Suma przychodow w biezacym miesiacu: " << totalIncomes << " zl" << endl;
+    cout << "Suma wydatkow w biezacym miesiacu: " << totalExpenses << " zl" << endl;
     cout << "Bilans dla biezacego miesiaca: " << totalIncomes - totalExpenses << " zl" <<endl;
 
     system("pause");
@@ -80,14 +81,14 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
 }
 
 
-
+//POPRZEDNI MIESI¥C
 void BalanceManager::showBalanceForPreviousMonth(vector <Income> incomes, vector <Expense> expenses)
 {
     int dateOfFirstDayOfPreviousMonth = datesManager.getDateOfFirstDayOfPreviousMonth();
     int dateOfLastDayOfPreviousMonth = datesManager.getDateOfLastDayOfPreviousMonth();
     vector<Income> incomesForPreviousMonth;
     vector<Expense> expensesForPreviousMonth;
-    float totalIncomes, totalExpenses;
+    float totalIncomes = 0, totalExpenses = 0;
 
     system("cls");
     cout << ">>> BILANS Z POPRZEDNIEGO MIESIACA <<<" << endl;
@@ -124,7 +125,7 @@ void BalanceManager::showBalanceForPreviousMonth(vector <Income> incomes, vector
 
     for(int i = 0; i < expenses.size(); i++)
     {
-        if(expenses[i].getDate() <= dateOfLastDayOfPreviousMonth && expenses[i].getDate() >= dateOfFirstDayOfPreviousMonth)
+        if(expenses[i].getDate() >= dateOfFirstDayOfPreviousMonth && expenses[i].getDate() <= dateOfLastDayOfPreviousMonth)
         {
             expensesForPreviousMonth.push_back(expenses[i]);
             totalExpenses += atof(expenses[i].getAmount().c_str());
@@ -158,3 +159,117 @@ void BalanceManager::showBalanceForPreviousMonth(vector <Income> incomes, vector
     system("pause");
 
 }
+
+
+//WYBRANY PRZEDZIA£ CZASOWY
+void BalanceManager::showBalanceForSelectedPeriod(vector <Income> incomes, vector <Expense> expenses)
+{
+    int dateFrom = 0, dateTo = 0;
+    string dateFromString = "", dateToString = "";
+    vector<Income> incomesForSelectedPeriod;
+    vector<Expense> expensesForSelectedPeriod;
+    float totalIncomes = 0, totalExpenses = 0;
+
+    system("cls");
+    cout << ">>> BILANS DLA WYBRANEGO OKRESU <<<" << endl;
+    cout << endl;
+
+// data OD:
+    cout << "Podaj date, od ktorej chcesz wyswietlic dane o finansach (rrrr-mm-dd): " << endl;
+    cin.clear();
+    cin.sync();
+
+    dateFromString = ancillaryMethods.getSingleLine();
+
+    while(datesManager.checkDate(dateFromString)==0)
+    {
+        cout << "Podana data jest niepoprawna." << endl;
+        cout << "Podaj date od 2000-01-01: ";
+        dateFromString = ancillaryMethods.getSingleLine();
+    }
+
+    dateFrom = atoi(datesManager.addZeroToMonthAndDay(dateFromString).c_str());
+
+// data DO:
+    cout << "Podaj date, do ktorej chcesz wyswietlic dane o finansach (rrrr-mm-dd): " << endl;
+    cin.clear();
+    cin.sync();
+
+    dateToString = ancillaryMethods.getSingleLine();
+
+    while(datesManager.checkDate(dateToString)==0)
+    {
+        cout << "Podana data jest niepoprawna." << endl;
+        cout << "Podaj date do ostatniego dnia biezacego miesiaca: ";
+        dateToString = ancillaryMethods.getSingleLine();
+    }
+
+    dateTo = atoi(datesManager.addZeroToMonthAndDay(dateToString).c_str());
+
+
+//PRZYCHODY
+
+    for(int i = 0; i < incomes.size(); i++)
+    {
+        if(incomes[i].getDate() >= dateFrom && incomes[i].getDate() <= dateTo)
+        {
+            incomesForSelectedPeriod.push_back(incomes[i]);
+            totalIncomes += atof(incomes[i].getAmount().c_str());
+
+        }
+    }
+
+    sort(incomesForSelectedPeriod.begin(), incomesForSelectedPeriod.end());
+
+    cout << endl;
+    cout << "Twoje PRZYCHODY w wybranym okresie: " << endl;
+    cout << endl;
+
+    for (int i = 0; i < incomesForSelectedPeriod.size(); i++)
+    {
+        cout << "Data: " << ancillaryMethods.convertDateFromIntToString(incomesForSelectedPeriod[i].getDate()) << endl;
+        cout << "Opis: " << incomesForSelectedPeriod[i].getItem() << endl;
+        cout << "Kwota: " << incomesForSelectedPeriod[i].getAmount() << endl;
+        cout << endl;
+    }
+
+
+//WYDATKI
+
+    for(int i = 0; i < expenses.size(); i++)
+    {
+        if(expenses[i].getDate() >= dateFrom && expenses[i].getDate() <= dateTo)
+        {
+            expensesForSelectedPeriod.push_back(expenses[i]);
+            totalExpenses += atof(expenses[i].getAmount().c_str());
+        }
+    }
+
+    sort(expensesForSelectedPeriod.begin(), expensesForSelectedPeriod.end());
+
+    cout << endl;
+    cout << "Twoje WYDATKI w wybranym okresie: " << endl;
+    cout << endl;
+
+    for (int i = 0; i < expensesForSelectedPeriod.size(); i++)
+    {
+        cout << "Data: " << ancillaryMethods.convertDateFromIntToString(expensesForSelectedPeriod[i].getDate()) << endl;
+        cout << "Opis: " << expensesForSelectedPeriod[i].getItem() << endl;
+        cout << "Kwota: " << expensesForSelectedPeriod[i].getAmount() << endl;
+        cout << endl;
+    }
+
+
+//BILANS
+    cout << endl;
+    cout << "PODSUMOWANIE:" << endl;
+    cout << endl;
+
+    cout << "Suma przychodow w okresie od " << dateFromString << " do " << dateToString << " wynosi: " << totalIncomes << " zl" << endl;
+    cout << "Suma wydatkow w okresie od " << dateFromString << " do " << dateToString << " wynosi: " << totalExpenses << " zl" << endl;
+    cout << "Bilans dla wybranego okresu: " << totalIncomes - totalExpenses << " zl" <<endl;
+
+    system("pause");
+
+}
+

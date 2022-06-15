@@ -59,6 +59,7 @@ public:
     //void displayAllExpenses();
     void showBalanceForCurrentMonth();
     void showBalanceForPreviousMonth();
+    void showBalanceForSelectedPeriod();
 
 };
 

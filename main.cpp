@@ -42,15 +42,15 @@ int main()
             case '2':
                 personalBudget.addNewExpense();
                 break;
-             case '3':
-                 personalBudget.showBalanceForCurrentMonth();
-                 break;
-             case '4':
-                 personalBudget.showBalanceForPreviousMonth();
-                 break;
-            /* case '5':
-                 personalBudget.showBalanceForSelectedPeriod();
-                 break;*/
+            case '3':
+                personalBudget.showBalanceForCurrentMonth();
+                break;
+            case '4':
+                personalBudget.showBalanceForPreviousMonth();
+                break;
+            case '5':
+                personalBudget.showBalanceForSelectedPeriod();
+                break;
             case '6':
                 personalBudget.changePasswordOfLoggedInUser();
                 break;

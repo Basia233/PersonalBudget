@@ -158,3 +158,12 @@ void PersonalBudget::showBalanceForPreviousMonth()
         balanceManager -> showBalanceForPreviousMonth(incomeManager -> getIncomesOfLoggedInUser(), expenseManager -> getExpensesOfLoggedInUser());
     }
 }
+
+
+void PersonalBudget::showBalanceForSelectedPeriod()
+{
+    if(userManager.isUserLoggedIn())
+    {
+        balanceManager -> showBalanceForSelectedPeriod(incomeManager -> getIncomesOfLoggedInUser(), expenseManager -> getExpensesOfLoggedInUser());
+    }
+}
