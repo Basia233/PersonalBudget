@@ -20,7 +20,7 @@ User UserManager::provideNewUserData()//vector nie bedzie atrybutem - jest zadek
 {
     User user;
 
-    user.setId(getLoggedInUserId());
+    user.setId(getNewUserId());
     string login;
     string password;
     string name;
