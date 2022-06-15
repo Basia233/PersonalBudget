@@ -37,7 +37,7 @@ public:
     void addNewIncome();
     int getLoggedInUserId();// getter
     string convertAmount(string amount);
-    void displayAllIncomes();
+    //void displayAllIncomes();
     vector <Income> getIncomesOfLoggedInUser();
     /*void changePasswordOfLoggedInUser();
     void logOut();

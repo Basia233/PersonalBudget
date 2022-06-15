@@ -54,3 +54,4 @@ string Finances::getAmount()
 {
     return amount;
 }
+

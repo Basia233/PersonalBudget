@@ -90,7 +90,7 @@ string IncomeManager::convertAmount(string amount)
     return amount;
 }
 
-
+/*
 void IncomeManager::displayAllIncomes()
 {
     for (int i=0; i<incomes.size(); i++)
@@ -102,7 +102,7 @@ void IncomeManager::displayAllIncomes()
         cout << incomes[i].getAmount() << endl;
     }
 }
-
+*/
 
 int IncomeManager::getNewIncomeId()
 {

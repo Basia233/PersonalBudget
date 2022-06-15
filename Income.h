@@ -8,7 +8,6 @@
 //#include "AncillaryMethods.h"
 //#include "XMLFile.h"
 
-
 using namespace std;
 
 class Income : public Finances

@@ -89,7 +89,7 @@ string ExpenseManager::convertAmount(string amount)
     return amount;
 }
 
-
+/*
 void ExpenseManager::displayAllExpenses()
 {
     for (int i=0; i<expenses.size(); i++)
@@ -101,7 +101,7 @@ void ExpenseManager::displayAllExpenses()
         cout << expenses[i].getAmount() << endl;
     }
 }
-
+*/
 
 int ExpenseManager::getNewExpenseId()
 {

@@ -123,7 +123,7 @@ char PersonalBudget::selectOptionFromUserMenu()
     return choice;
 }
 
-
+/*
 void PersonalBudget::displayAllIncomes()
 {
     if(userManager.isUserLoggedIn())
@@ -140,7 +140,7 @@ void PersonalBudget::displayAllExpenses()
         expenseManager -> displayAllExpenses();
     }
 }
-
+*/
 
 void PersonalBudget::showBalanceForCurrentMonth()
 {

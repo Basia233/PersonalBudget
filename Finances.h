@@ -25,6 +25,12 @@ public:
     int getDate();
     string getItem();
     string getAmount(); // lub float
+
+
+    bool operator <( const Finances& value ) const
+    {
+        return date < value.date;
+    }
 };
 
 #endif
