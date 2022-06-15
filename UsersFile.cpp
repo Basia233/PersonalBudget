@@ -94,7 +94,7 @@ void UsersFile::changePasswordInFile(int idOfLoggedInUser, string newPassword)
 
     if(fileExsist)
     {
-        xml.FindElem();//wchodzi do kolejnego poziomu pliku xml
+        xml.FindElem();//przechodzi do kolejnego poziomu pliku xml
         xml.IntoElem();
 
         while (xml.FindElem("User"))

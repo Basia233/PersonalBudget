@@ -11,20 +11,19 @@ class Finances
     int userId;
     int date;
     string item;
-    string amount;//lub float
+    string amount;
 
 public:
     void setTransactionId(int newTransactionId);
     void setUserId(int newUserId);
     void setDate(int newDate);
     void setItem(string newItem);
-    void setAmount(string newAmount);// lub float
-
+    void setAmount(string newAmount);
     int getTransactionId();
     int getUserId();
     int getDate();
     string getItem();
-    string getAmount(); // lub float
+    string getAmount();
 
 
     bool operator <( const Finances& value ) const

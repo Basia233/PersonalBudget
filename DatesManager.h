@@ -15,7 +15,6 @@ class DatesManager
     AncillaryMethods ancillaryMethods;
 
 public:
-//DatesManager();
 
     int getCurrentDate();
     bool checkDate(string enteredDate);

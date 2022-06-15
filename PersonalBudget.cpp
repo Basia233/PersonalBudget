@@ -123,24 +123,6 @@ char PersonalBudget::selectOptionFromUserMenu()
     return choice;
 }
 
-/*
-void PersonalBudget::displayAllIncomes()
-{
-    if(userManager.isUserLoggedIn())
-    {
-        incomeManager -> displayAllIncomes();
-    }
-}
-
-
-void PersonalBudget::displayAllExpenses()
-{
-    if(userManager.isUserLoggedIn())
-    {
-        expenseManager -> displayAllExpenses();
-    }
-}
-*/
 
 void PersonalBudget::showBalanceForCurrentMonth()
 {

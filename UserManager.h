@@ -2,7 +2,7 @@
 #define USERMANAGER_H
 
 #include <iostream>
-#include <vector> //inkludujemy vector bo uzytkownicy beda zapisani w vectorze
+#include <vector> //uzytkownicy zapisani w vectorze
 #include <windows.h> // system pause
 #include <fstream>
 #include <sstream> // konwersja int na string

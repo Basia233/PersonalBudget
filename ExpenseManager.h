@@ -36,15 +36,8 @@ public:
     void addNewExpense();
     int getLoggedInUserId();
     string convertAmount(string amount);
-    //void displayAllExpenses();
     vector <Expense> getExpensesOfLoggedInUser();
-    /*void changePasswordOfLoggedInUser();
-    void logOut();
 
-    int userLogIn();
-    void setIdOfLoggedInUser(int newIdOfLoggedInUser);//setter
-    bool isUserLoggedIn();
-    */
 
 };
 

@@ -13,8 +13,8 @@ using namespace std;
 
 class ExpensesFile : public XMLFile
 {
-   int idOfLastExpense;
-   AncillaryMethods ancillaryMethods;
+    int idOfLastExpense;
+    AncillaryMethods ancillaryMethods;
 
 public:
     ExpensesFile(string expensesFileName): XMLFile(expensesFileName)
@@ -22,13 +22,11 @@ public:
         idOfLastExpense = 0;
     };
 
-  void addExpenseToFile(Expense expense);
-  int getIdOfLastExpense();
+    void addExpenseToFile(Expense expense);
+    int getIdOfLastExpense();
 
     vector <Expense> loadExpensesOfLoggedInUserFromFile(int idOfLoggedInUser);
-    /*vector <User> changePasswordOfLoggedInUser(int idOfLoggedInUser, vector <User> users);
-    void changePasswordInFile(int idOfLoggedInUser, string newPassword);
-*/
+
 };
 
 #endif

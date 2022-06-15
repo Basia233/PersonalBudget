@@ -10,12 +10,12 @@ void IncomesFile::addIncomeToFile(Income income)
     if(!fileExsist)
     {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xml.AddElem( "Incomes" ); // tworzy galaz Incomes
+        xml.AddElem( "Incomes" );
     }
 
-    xml.FindElem(); //wchodzi do kolejnego poziomu pliku xml
-    xml.IntoElem(); // ustawia ten element jako glowny, mozna dodac cos wewnatrz
-    xml.AddElem("Income"); // dodaje element
+    xml.FindElem();
+    xml.IntoElem();
+    xml.AddElem("Income");
     xml.IntoElem();
     xml.AddElem("UserID", income.getUserId());
     xml.AddElem("IncomeId", income.getTransactionId());

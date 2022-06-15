@@ -29,7 +29,7 @@ Expense ExpenseManager::enterNewExpenseData()
     int date = 0;
     string dateString;
     string item;
-    string amount;//lub float
+    string amount;
     char choice;
 
 
@@ -89,19 +89,7 @@ string ExpenseManager::convertAmount(string amount)
     return amount;
 }
 
-/*
-void ExpenseManager::displayAllExpenses()
-{
-    for (int i=0; i<expenses.size(); i++)
-    {
-        cout << expenses[i].getUserId() << endl;
-        cout << expenses[i].getTransactionId() << endl;
-        cout << expenses[i].getDate() << endl;
-        cout << expenses[i].getItem() << endl;
-        cout << expenses[i].getAmount() << endl;
-    }
-}
-*/
+
 
 int ExpenseManager::getNewExpenseId()
 {

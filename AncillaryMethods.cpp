@@ -39,18 +39,6 @@ string AncillaryMethods::changeFirstLetterToCapitalAndOtherToLowercase(string te
 }
 
 
-string AncillaryMethods::getNumber(string text, int characterPosition)
-{
-    string number = "";
-    while(isdigit(text[characterPosition]) == true)
-    {
-        number += text[characterPosition];
-        characterPosition ++;
-    }
-    return number;
-}
-
-
 char AncillaryMethods::getCharacter()
 {
     string input = "";

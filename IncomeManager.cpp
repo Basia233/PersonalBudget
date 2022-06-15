@@ -24,13 +24,12 @@ Income IncomeManager::enterNewIncomeData()
 
     int transactionId = getNewIncomeId();
     income.setTransactionId(transactionId);
-    //income.setTransactionId(incomesFile.getIdOfLastIncome()+1);
 
 
     int date = 0;
     string dateString;
     string item;
-    string amount;//lub float
+    string amount;
     char choice;
 
 
@@ -90,19 +89,7 @@ string IncomeManager::convertAmount(string amount)
     return amount;
 }
 
-/*
-void IncomeManager::displayAllIncomes()
-{
-    for (int i=0; i<incomes.size(); i++)
-    {
-        cout << incomes[i].getUserId() << endl;
-        cout << incomes[i].getTransactionId() << endl;
-        cout << incomes[i].getDate() << endl;
-        cout << incomes[i].getItem() << endl;
-        cout << incomes[i].getAmount() << endl;
-    }
-}
-*/
+
 
 int IncomeManager::getNewIncomeId()
 {

@@ -45,9 +45,6 @@ public:
     int getLoggedInUserId();
     void changePasswordOfLoggedInUser();
     void logOut();
-    //void wczytajUzytkownikowZPliku();
-
-
     bool isUserLoggedIn();
 
     char selectOptionFromMainMenu();
@@ -55,8 +52,7 @@ public:
 
     void addNewIncome();
     void addNewExpense();
-    //void displayAllIncomes();
-    //void displayAllExpenses();
+
     void showBalanceForCurrentMonth();
     void showBalanceForPreviousMonth();
     void showBalanceForSelectedPeriod();

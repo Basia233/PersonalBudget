@@ -16,7 +16,7 @@ void UserManager::userRegistration()
 }
 
 
-User UserManager::provideNewUserData()//vector nie bedzie atrybutem - jest zadeklarowany w pliku h
+User UserManager::provideNewUserData()
 {
     User user;
 

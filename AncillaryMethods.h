@@ -16,7 +16,6 @@ public:
     static int stringToIntConversion(string number);
     string getSingleLine();
     string changeFirstLetterToCapitalAndOtherToLowercase(string text);
-    string getNumber(string text, int pozycjaZnaku);
     char getCharacter();
     string convertDateFromIntToString(int number);
     int convertDateFromStringToInt(string stringDate);

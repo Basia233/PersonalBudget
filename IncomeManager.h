@@ -10,7 +10,6 @@
 #include "Income.h"
 #include "IncomesFile.h"
 #include "DatesManager.h"
-//#include "UserManager.h"
 #include "AncillaryMethods.h"
 
 using namespace std;
@@ -37,15 +36,7 @@ public:
     void addNewIncome();
     int getLoggedInUserId();// getter
     string convertAmount(string amount);
-    //void displayAllIncomes();
     vector <Income> getIncomesOfLoggedInUser();
-    /*void changePasswordOfLoggedInUser();
-    void logOut();
-
-    int userLogIn();
-    void setIdOfLoggedInUser(int newIdOfLoggedInUser);//setter
-    bool isUserLoggedIn();
-    */
 
 };
 

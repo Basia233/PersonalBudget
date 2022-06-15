@@ -5,9 +5,7 @@
 #include <vector>
 #include "Markup.h"
 #include "Income.h"
-//#include "IncomeManager.h"
 #include "Expense.h"
-//#include "ExpenseManager.h"
 #include "DatesManager.h"
 #include "AncillaryMethods.h"
 
