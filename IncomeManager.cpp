@@ -22,8 +22,7 @@ Income IncomeManager::enterNewIncomeData()
 
     income.setUserId(ID_OF_LOGGED_IN_USER);
 
-    int transactionId = getNewIncomeId();
-    income.setTransactionId(transactionId);
+    income.setTransactionId(incomesFile.getIdOfLastIncome() + 1);
 
 
     int date = 0;
@@ -50,7 +49,7 @@ Income IncomeManager::enterNewIncomeData()
 
         while(datesManager.checkDate(dateString)==0)
         {
-            cout << "Podana data jest poza zakresem." << endl;
+            cout << "Podana data jest nieprawidlowa." << endl;
             cout << "Podaj date od 2000-01-01 do ostatniego dnia biezacego miesiaca: ";
             cin >> dateString;
         }
@@ -87,16 +86,6 @@ string IncomeManager::convertAmount(string amount)
     }
 
     return amount;
-}
-
-
-
-int IncomeManager::getNewIncomeId()
-{
-    if (incomes.empty() == true)
-        return 1;
-    else
-        return incomes.back().getTransactionId() + 1;
 }
 
 

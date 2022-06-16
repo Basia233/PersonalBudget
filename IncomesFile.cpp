@@ -10,20 +10,22 @@ void IncomesFile::addIncomeToFile(Income income)
     if(!fileExsist)
     {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xml.AddElem( "Incomes" );
+        xml.AddElem("Incomes");
     }
 
     xml.FindElem();
     xml.IntoElem();
     xml.AddElem("Income");
     xml.IntoElem();
-    xml.AddElem("UserID", income.getUserId());
     xml.AddElem("IncomeId", income.getTransactionId());
+    xml.AddElem("UserID", income.getUserId());
     xml.AddElem("Date", date);
     xml.AddElem("Item", income.getItem());
     xml.AddElem("Amount", income.getAmount());
 
     xml.Save("Incomes.xml");
+
+    idOfLastIncome ++;
 
 }
 
@@ -64,7 +66,9 @@ vector <Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int idOfLoggedInU
 
                 incomes.push_back(income);
             }
+
             xml.OutOfElem();
+            idOfLastIncome++;
         }
     }
     return incomes;

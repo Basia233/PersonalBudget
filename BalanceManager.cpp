@@ -16,7 +16,6 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
 
 
 //PRZYCHODY
-
     for(int i = 0; i < incomes.size(); i++)
     {
         if(incomes[i].getDate() >= dateOfFirstDayOfCurrentMonth && incomes[i].getDate() <= dateOfLastDayOfCurrentMonth)
@@ -27,7 +26,7 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
         }
     }
 
-    sort(incomesForCurrentMonth.begin(),incomesForCurrentMonth.end());
+    sort(incomesForCurrentMonth.begin(), incomesForCurrentMonth.end());
 
     cout << "Twoje PRZYCHODY w biezacym miesiacu: " << endl;
     cout << endl;
@@ -36,13 +35,12 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
     {
         cout << "Data: " << ancillaryMethods.convertDateFromIntToString(incomesForCurrentMonth[i].getDate()) << endl;
         cout << "Opis: " << incomesForCurrentMonth[i].getItem() << endl;
-        cout << "Kwota: " << incomesForCurrentMonth[i].getAmount() << endl;
+        cout << "Kwota: " << fixed << setprecision(2) << atof(incomesForCurrentMonth[i].getAmount().c_str()) << endl;
         cout << endl;
     }
 
 
 //WYDATKI
-
     for(int i = 0; i < expenses.size(); i++)
     {
         if(expenses[i].getDate() >= dateOfFirstDayOfCurrentMonth && expenses[i].getDate() <= dateOfLastDayOfCurrentMonth)
@@ -52,7 +50,7 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
         }
     }
 
-    sort(expensesForCurrentMonth.begin(),expensesForCurrentMonth.end());
+    sort(expensesForCurrentMonth.begin(), expensesForCurrentMonth.end());
 
     cout << endl;
     cout << "Twoje WYDATKI w biezacym miesiacu: " << endl;
@@ -62,7 +60,7 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
     {
         cout << "Data: " << ancillaryMethods.convertDateFromIntToString(expensesForCurrentMonth[i].getDate()) << endl;
         cout << "Opis: " << expensesForCurrentMonth[i].getItem() << endl;
-        cout << "Kwota: " << expensesForCurrentMonth[i].getAmount() << endl;
+        cout << "Kwota: " << fixed << setprecision(2) << atof(expensesForCurrentMonth[i].getAmount().c_str()) << endl;
         cout << endl;
     }
 
@@ -72,9 +70,9 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
     cout << "PODSUMOWANIE:" << endl;
     cout << endl;
 
-    cout << "Suma przychodow w biezacym miesiacu: " << totalIncomes << " zl" << endl;
-    cout << "Suma wydatkow w biezacym miesiacu: " << totalExpenses << " zl" << endl;
-    cout << "Bilans dla biezacego miesiaca: " << totalIncomes - totalExpenses << " zl" <<endl;
+    cout << "Suma przychodow w biezacym miesiacu: " << fixed << setprecision(2) << totalIncomes << " zl" << endl;
+    cout << "Suma wydatkow w biezacym miesiacu: " << fixed << setprecision(2) << totalExpenses << " zl" << endl;
+    cout << "Bilans dla biezacego miesiaca: " << fixed << setprecision(2) << totalIncomes - totalExpenses << " zl" <<endl;
 
     system("pause");
 
@@ -96,7 +94,6 @@ void BalanceManager::showBalanceForPreviousMonth(vector <Income> incomes, vector
 
 
 //PRZYCHODY
-
     for(int i = 0; i < incomes.size(); i++)
     {
         if(incomes[i].getDate() >= dateOfFirstDayOfPreviousMonth && incomes[i].getDate() <= dateOfLastDayOfPreviousMonth)
@@ -116,13 +113,12 @@ void BalanceManager::showBalanceForPreviousMonth(vector <Income> incomes, vector
     {
         cout << "Data: " << ancillaryMethods.convertDateFromIntToString(incomesForPreviousMonth[i].getDate()) << endl;
         cout << "Opis: " << incomesForPreviousMonth[i].getItem() << endl;
-        cout << "Kwota: " << incomesForPreviousMonth[i].getAmount() << endl;
+        cout << "Kwota: " << fixed << setprecision(2) << atof(incomesForPreviousMonth[i].getAmount().c_str()) << endl;
         cout << endl;
     }
 
 
 //WYDATKI
-
     for(int i = 0; i < expenses.size(); i++)
     {
         if(expenses[i].getDate() >= dateOfFirstDayOfPreviousMonth && expenses[i].getDate() <= dateOfLastDayOfPreviousMonth)
@@ -142,7 +138,7 @@ void BalanceManager::showBalanceForPreviousMonth(vector <Income> incomes, vector
     {
         cout << "Data: " << ancillaryMethods.convertDateFromIntToString(expensesForPreviousMonth[i].getDate()) << endl;
         cout << "Opis: " << expensesForPreviousMonth[i].getItem() << endl;
-        cout << "Kwota: " << expensesForPreviousMonth[i].getAmount() << endl;
+        cout << "Kwota: " << fixed << setprecision(2) << atof(expensesForPreviousMonth[i].getAmount().c_str()) << endl;
         cout << endl;
     }
 
@@ -152,9 +148,9 @@ void BalanceManager::showBalanceForPreviousMonth(vector <Income> incomes, vector
     cout << "PODSUMOWANIE:" << endl;
     cout << endl;
 
-    cout << "Suma przychodow w poprzednim miesiacu: " << totalIncomes << " zl" << endl;
-    cout << "Suma wydatkow w poprzednim miesiacu: " << totalExpenses << " zl" << endl;
-    cout << "Bilans dla poprzedniego miesiaca: " << totalIncomes - totalExpenses << " zl" <<endl;
+    cout << "Suma przychodow w poprzednim miesiacu: " << fixed << setprecision(2) << totalIncomes << " zl" << endl;
+    cout << "Suma wydatkow w poprzednim miesiacu: " << fixed << setprecision(2) << totalExpenses << " zl" << endl;
+    cout << "Bilans dla poprzedniego miesiaca: " << fixed << setprecision(2) << totalIncomes - totalExpenses << " zl" <<endl;
 
     system("pause");
 
@@ -175,40 +171,53 @@ void BalanceManager::showBalanceForSelectedPeriod(vector <Income> incomes, vecto
     cout << endl;
 
 // data OD:
-    cout << "Podaj date, od ktorej chcesz wyswietlic dane o finansach (rrrr-mm-dd): " << endl;
-    cin.clear();
-    cin.sync();
 
-    dateFromString = ancillaryMethods.getSingleLine();
-
-    while(datesManager.checkDate(dateFromString)==0)
+    do
     {
-        cout << "Podana data jest niepoprawna." << endl;
-        cout << "Podaj date od 2000-01-01: ";
-        dateFromString = ancillaryMethods.getSingleLine();
-    }
+        cout << "Podaj date, od ktorej chcesz wyswietlic dane o finansach (rrrr-mm-dd): " << endl;
+        cin.clear();
+        cin.sync();
 
-    dateFrom = atoi(datesManager.addZeroToMonthAndDay(dateFromString).c_str());
+        dateFromString = ancillaryMethods.getSingleLine();
+
+        while(datesManager.checkDate(dateFromString)==0)
+        {
+            cout << "Podana data jest niepoprawna." << endl;
+            cout << "Podaj date od 2000-01-01: ";
+            dateFromString = ancillaryMethods.getSingleLine();
+        }
+
+        dateFrom = atoi(datesManager.addZeroToMonthAndDay(dateFromString).c_str());
 
 // data DO:
-    cout << "Podaj date, do ktorej chcesz wyswietlic dane o finansach (rrrr-mm-dd): " << endl;
-    cin.clear();
-    cin.sync();
+        cout << "Podaj date, do ktorej chcesz wyswietlic dane o finansach (rrrr-mm-dd): " << endl;
+        cin.clear();
+        cin.sync();
 
-    dateToString = ancillaryMethods.getSingleLine();
-
-    while(datesManager.checkDate(dateToString)==0)
-    {
-        cout << "Podana data jest niepoprawna." << endl;
-        cout << "Podaj date do ostatniego dnia biezacego miesiaca: ";
         dateToString = ancillaryMethods.getSingleLine();
-    }
 
-    dateTo = atoi(datesManager.addZeroToMonthAndDay(dateToString).c_str());
+        while(datesManager.checkDate(dateToString)==0)
+        {
+            cout << "Podana data jest niepoprawna." << endl;
+            cout << "Podaj date do ostatniego dnia biezacego miesiaca: ";
+            dateToString = ancillaryMethods.getSingleLine();
+        }
+
+        dateTo = atoi(datesManager.addZeroToMonthAndDay(dateToString).c_str());
+
+        if (dateTo < dateFrom)
+        {
+            cout << endl;
+            cout << "Data koncowa powinna byc pozniejsza niz data poczatkowa. Wprowadz date jeszcze raz. " << endl;
+            cout << endl;
+        }
+
+    }
+    while (dateFrom > dateTo);
+
 
 
 //PRZYCHODY
-
     for(int i = 0; i < incomes.size(); i++)
     {
         if(incomes[i].getDate() >= dateFrom && incomes[i].getDate() <= dateTo)
@@ -229,13 +238,12 @@ void BalanceManager::showBalanceForSelectedPeriod(vector <Income> incomes, vecto
     {
         cout << "Data: " << ancillaryMethods.convertDateFromIntToString(incomesForSelectedPeriod[i].getDate()) << endl;
         cout << "Opis: " << incomesForSelectedPeriod[i].getItem() << endl;
-        cout << "Kwota: " << incomesForSelectedPeriod[i].getAmount() << endl;
+        cout << "Kwota: " << fixed << setprecision(2) << atof(incomesForSelectedPeriod[i].getAmount().c_str()) << endl;
         cout << endl;
     }
 
 
 //WYDATKI
-
     for(int i = 0; i < expenses.size(); i++)
     {
         if(expenses[i].getDate() >= dateFrom && expenses[i].getDate() <= dateTo)
@@ -255,7 +263,7 @@ void BalanceManager::showBalanceForSelectedPeriod(vector <Income> incomes, vecto
     {
         cout << "Data: " << ancillaryMethods.convertDateFromIntToString(expensesForSelectedPeriod[i].getDate()) << endl;
         cout << "Opis: " << expensesForSelectedPeriod[i].getItem() << endl;
-        cout << "Kwota: " << expensesForSelectedPeriod[i].getAmount() << endl;
+        cout << "Kwota: " << fixed << setprecision(2) << atof(expensesForSelectedPeriod[i].getAmount().c_str()) << endl;
         cout << endl;
     }
 
@@ -265,9 +273,9 @@ void BalanceManager::showBalanceForSelectedPeriod(vector <Income> incomes, vecto
     cout << "PODSUMOWANIE:" << endl;
     cout << endl;
 
-    cout << "Suma przychodow w okresie od " << dateFromString << " do " << dateToString << " wynosi: " << totalIncomes << " zl" << endl;
-    cout << "Suma wydatkow w okresie od " << dateFromString << " do " << dateToString << " wynosi: " << totalExpenses << " zl" << endl;
-    cout << "Bilans dla wybranego okresu: " << totalIncomes - totalExpenses << " zl" <<endl;
+    cout << "Suma przychodow w okresie od " << dateFromString << " do " << dateToString << " wynosi: " << fixed << setprecision(2) << totalIncomes << " zl" << endl;
+    cout << "Suma wydatkow w okresie od " << dateFromString << " do " << dateToString << " wynosi: " << fixed << setprecision(2) << totalExpenses << " zl" << endl;
+    cout << "Bilans dla wybranego okresu: " << fixed << setprecision(2) << totalIncomes - totalExpenses << " zl" <<endl;
 
     system("pause");
 

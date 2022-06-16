@@ -22,8 +22,7 @@ Expense ExpenseManager::enterNewExpenseData()
 
     expense.setUserId(ID_OF_LOGGED_IN_USER);
 
-    int transactionId = getNewExpenseId();
-    expense.setTransactionId(transactionId);
+    expense.setTransactionId(expensesFile.getIdOfLastExpense() + 1);
 
 
     int date = 0;
@@ -50,7 +49,7 @@ Expense ExpenseManager::enterNewExpenseData()
 
         while(datesManager.checkDate(dateString)==0)
         {
-            cout << "Podana data jest poza zakresem." << endl;
+            cout << "Podana data jest nieprawidlowa." << endl;
             cout << "Podaj date od 2000-01-01 do ostatniego dnia biezacego miesiaca: ";
             cin >> dateString;
         }
@@ -87,16 +86,6 @@ string ExpenseManager::convertAmount(string amount)
     }
 
     return amount;
-}
-
-
-
-int ExpenseManager::getNewExpenseId()
-{
-    if (expenses.empty() == true)
-        return 1;
-    else
-        return expenses.back().getTransactionId() + 1;
 }
 
 
