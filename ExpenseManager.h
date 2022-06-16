@@ -20,7 +20,6 @@ class ExpenseManager
     vector <Expense> expenses;
     ExpensesFile expensesFile;
     DatesManager datesManager;
-    AncillaryMethods ancillaryMethods;
 
     Expense enterNewExpenseData();
     int getNewExpenseId();

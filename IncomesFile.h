@@ -6,7 +6,7 @@
 
 #include "Markup.h"
 #include "Income.h"
-#include "AncillaryMethods.h"
+#include "DatesManager.h"
 #include "XMLFile.h"
 
 using namespace std;
@@ -14,7 +14,7 @@ using namespace std;
 class IncomesFile : public XMLFile
 {
     int idOfLastIncome;
-    AncillaryMethods ancillaryMethods;
+    DatesManager datesManager;
 
 public:
     IncomesFile(string incomesFileName): XMLFile(incomesFileName)

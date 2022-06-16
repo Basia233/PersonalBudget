@@ -39,11 +39,11 @@ User UserManager::provideNewUserData()
     user.setPassword(password);
     cout << "Podaj imie: ";
     cin >> name;
-    name = ancillaryMethods.changeFirstLetterToCapitalAndOtherToLowercase(name);
+    name = AncillaryMethods::changeFirstLetterToCapitalAndOtherToLowercase(name);
     user.setName(name);
     cout << "Podaj nazwisko: ";
     cin >> surname;
-    surname = ancillaryMethods.changeFirstLetterToCapitalAndOtherToLowercase(surname);
+    surname = AncillaryMethods::changeFirstLetterToCapitalAndOtherToLowercase(surname);
     user.setSurname(surname);
 
     return user;
@@ -92,7 +92,7 @@ int UserManager::userLogIn()
     string login = "", password = "";
 
     cout << "Podaj login: ";
-    login = ancillaryMethods.getSingleLine();
+    login = AncillaryMethods::getSingleLine();
 
     int i=0;
 
@@ -103,7 +103,7 @@ int UserManager::userLogIn()
             for (int numberOfTrial = 3; numberOfTrial > 0; numberOfTrial--)
             {
                 cout << "Podaj haslo. Pozostalo prob: " << numberOfTrial << ": ";
-                password = ancillaryMethods.getSingleLine();
+                password = AncillaryMethods::getSingleLine();
 
                 if (users[i].getPassword() == password)
                 {

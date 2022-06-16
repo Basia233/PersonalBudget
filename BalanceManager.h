@@ -16,7 +16,6 @@ using namespace std;
 class BalanceManager
 {
     DatesManager datesManager;
-    AncillaryMethods ancillaryMethods;
 
 public:
     void showBalanceForCurrentMonth(vector <Income> incomes, vector <Expense> expenses);

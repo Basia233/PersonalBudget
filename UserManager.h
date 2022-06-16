@@ -18,7 +18,6 @@ class UserManager
     int idOfLoggedInUser;
     vector <User> users;
     UsersFile usersFile;
-    AncillaryMethods ancillaryMethods;
 
     User provideNewUserData();
     int getNewUserId();

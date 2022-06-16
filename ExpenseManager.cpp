@@ -45,7 +45,7 @@ Expense ExpenseManager::enterNewExpenseData()
         cin.clear();
         cin.sync();
 
-        dateString = ancillaryMethods.getSingleLine();
+        dateString = AncillaryMethods::getSingleLine();
 
         while(datesManager.checkDate(dateString)==0)
         {
@@ -62,14 +62,14 @@ Expense ExpenseManager::enterNewExpenseData()
     cin.clear();
     cin.sync();
     cout << "Podaj powod wydatku: ";
-    item = ancillaryMethods.getSingleLine();
+    item = AncillaryMethods::getSingleLine();
     expense.setItem(item);
 
 
     cin.clear();
     cin.sync();
     cout << "Podaj kwote wydatku: ";
-    amount = ancillaryMethods.getSingleLine();
+    amount = AncillaryMethods::getSingleLine();
     amount = convertAmount(amount);
     expense.setAmount(amount);
 

@@ -20,7 +20,6 @@ class IncomeManager
     vector <Income> incomes;
     IncomesFile incomesFile;
     DatesManager datesManager;
-    AncillaryMethods ancillaryMethods;
 
     Income enterNewIncomeData();
     int getNewIncomeId();

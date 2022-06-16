@@ -14,12 +14,9 @@ class AncillaryMethods
 public:
     static string intToStringConversion(int number);
     static int stringToIntConversion(string number);
-    string getSingleLine();
-    string changeFirstLetterToCapitalAndOtherToLowercase(string text);
-    char getCharacter();
-    string convertDateFromIntToString(int number);
-    int convertDateFromStringToInt(string stringDate);
-
+    static string getSingleLine();
+    static string changeFirstLetterToCapitalAndOtherToLowercase(string text);
+    static char getCharacter();
 };
 
 #endif

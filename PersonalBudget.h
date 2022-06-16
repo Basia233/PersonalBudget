@@ -14,7 +14,6 @@ using namespace std;
 class PersonalBudget
 {
     UserManager userManager;
-    AncillaryMethods ancillaryMethods;
     IncomeManager *incomeManager;
     ExpenseManager *expenseManager;
     BalanceManager *balanceManager;

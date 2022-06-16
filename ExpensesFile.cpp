@@ -3,7 +3,7 @@
 void ExpensesFile::addExpenseToFile(Expense expense)
 {
     CMarkup xml;
-    string date = ancillaryMethods.convertDateFromIntToString(expense.getDate());
+    string date = datesManager.convertDateFromIntToString(expense.getDate());
 
     bool fileExsist = xml.Load("Expenses.xml");
 
@@ -57,7 +57,7 @@ vector <Expense> ExpensesFile::loadExpensesOfLoggedInUserFromFile(int idOfLogged
                 xml.FindElem("ExpenseId");
                 expense.setTransactionId(atoi(xml.GetData().c_str()));
                 xml.FindElem("Date");
-                date = ancillaryMethods.convertDateFromStringToInt(xml.GetData());
+                date = datesManager.convertDateFromStringToInt(xml.GetData());
                 expense.setDate(date);
                 xml.FindElem("Item");
                 expense.setItem(xml.GetData());

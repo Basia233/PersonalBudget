@@ -12,8 +12,6 @@ using namespace std;
 class DatesManager
 {
 
-    AncillaryMethods ancillaryMethods;
-
 public:
 
     int getCurrentDate();
@@ -22,11 +20,15 @@ public:
     bool checkMaxDate(string enteredDate);
     bool checkNumberOfDaysAndMonth(string enteredDate);
     string addZeroToMonthAndDay(string enteredDate);
+
     int getNumberOfDaysOfMonth(int month, int year);
     int getDateOfFirstDayOfCurrentMonth();
     int getDateOfLastDayOfCurrentMonth();
     int getDateOfFirstDayOfPreviousMonth();
     int getDateOfLastDayOfPreviousMonth();
+
+    string convertDateFromIntToString(int number);
+    int convertDateFromStringToInt(string stringDate);
 
 };
 

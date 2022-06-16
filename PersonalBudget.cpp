@@ -94,7 +94,7 @@ char PersonalBudget::selectOptionFromMainMenu()
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
 
-    choice = ancillaryMethods.getCharacter();
+    choice = AncillaryMethods::getCharacter();
 
     return choice;
 }
@@ -118,7 +118,7 @@ char PersonalBudget::selectOptionFromUserMenu()
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
 
-    choice = ancillaryMethods.getCharacter();
+    choice = AncillaryMethods::getCharacter();
 
     return choice;
 }

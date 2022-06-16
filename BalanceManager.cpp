@@ -33,7 +33,7 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
 
     for (int i = 0; i < incomesForCurrentMonth.size(); i++)
     {
-        cout << "Data: " << ancillaryMethods.convertDateFromIntToString(incomesForCurrentMonth[i].getDate()) << endl;
+        cout << "Data: " << datesManager.convertDateFromIntToString(incomesForCurrentMonth[i].getDate()) << endl;
         cout << "Opis: " << incomesForCurrentMonth[i].getItem() << endl;
         cout << "Kwota: " << fixed << setprecision(2) << atof(incomesForCurrentMonth[i].getAmount().c_str()) << endl;
         cout << endl;
@@ -58,7 +58,7 @@ void BalanceManager::showBalanceForCurrentMonth(vector<Income> incomes, vector<E
 
     for (int i = 0; i < expensesForCurrentMonth.size(); i++)
     {
-        cout << "Data: " << ancillaryMethods.convertDateFromIntToString(expensesForCurrentMonth[i].getDate()) << endl;
+        cout << "Data: " << datesManager.convertDateFromIntToString(expensesForCurrentMonth[i].getDate()) << endl;
         cout << "Opis: " << expensesForCurrentMonth[i].getItem() << endl;
         cout << "Kwota: " << fixed << setprecision(2) << atof(expensesForCurrentMonth[i].getAmount().c_str()) << endl;
         cout << endl;
@@ -111,7 +111,7 @@ void BalanceManager::showBalanceForPreviousMonth(vector <Income> incomes, vector
 
     for (int i = 0; i < incomesForPreviousMonth.size(); i++)
     {
-        cout << "Data: " << ancillaryMethods.convertDateFromIntToString(incomesForPreviousMonth[i].getDate()) << endl;
+        cout << "Data: " << datesManager.convertDateFromIntToString(incomesForPreviousMonth[i].getDate()) << endl;
         cout << "Opis: " << incomesForPreviousMonth[i].getItem() << endl;
         cout << "Kwota: " << fixed << setprecision(2) << atof(incomesForPreviousMonth[i].getAmount().c_str()) << endl;
         cout << endl;
@@ -136,7 +136,7 @@ void BalanceManager::showBalanceForPreviousMonth(vector <Income> incomes, vector
 
     for (int i = 0; i < expensesForPreviousMonth.size(); i++)
     {
-        cout << "Data: " << ancillaryMethods.convertDateFromIntToString(expensesForPreviousMonth[i].getDate()) << endl;
+        cout << "Data: " << datesManager.convertDateFromIntToString(expensesForPreviousMonth[i].getDate()) << endl;
         cout << "Opis: " << expensesForPreviousMonth[i].getItem() << endl;
         cout << "Kwota: " << fixed << setprecision(2) << atof(expensesForPreviousMonth[i].getAmount().c_str()) << endl;
         cout << endl;
@@ -178,13 +178,13 @@ void BalanceManager::showBalanceForSelectedPeriod(vector <Income> incomes, vecto
         cin.clear();
         cin.sync();
 
-        dateFromString = ancillaryMethods.getSingleLine();
+        dateFromString = AncillaryMethods::getSingleLine();
 
         while(datesManager.checkDate(dateFromString)==0)
         {
             cout << "Podana data jest niepoprawna." << endl;
             cout << "Podaj date od 2000-01-01: ";
-            dateFromString = ancillaryMethods.getSingleLine();
+            dateFromString = AncillaryMethods::getSingleLine();
         }
 
         dateFrom = atoi(datesManager.addZeroToMonthAndDay(dateFromString).c_str());
@@ -194,13 +194,13 @@ void BalanceManager::showBalanceForSelectedPeriod(vector <Income> incomes, vecto
         cin.clear();
         cin.sync();
 
-        dateToString = ancillaryMethods.getSingleLine();
+        dateToString = AncillaryMethods::getSingleLine();
 
         while(datesManager.checkDate(dateToString)==0)
         {
             cout << "Podana data jest niepoprawna." << endl;
             cout << "Podaj date do ostatniego dnia biezacego miesiaca: ";
-            dateToString = ancillaryMethods.getSingleLine();
+            dateToString = AncillaryMethods::getSingleLine();
         }
 
         dateTo = atoi(datesManager.addZeroToMonthAndDay(dateToString).c_str());
@@ -236,7 +236,7 @@ void BalanceManager::showBalanceForSelectedPeriod(vector <Income> incomes, vecto
 
     for (int i = 0; i < incomesForSelectedPeriod.size(); i++)
     {
-        cout << "Data: " << ancillaryMethods.convertDateFromIntToString(incomesForSelectedPeriod[i].getDate()) << endl;
+        cout << "Data: " << datesManager.convertDateFromIntToString(incomesForSelectedPeriod[i].getDate()) << endl;
         cout << "Opis: " << incomesForSelectedPeriod[i].getItem() << endl;
         cout << "Kwota: " << fixed << setprecision(2) << atof(incomesForSelectedPeriod[i].getAmount().c_str()) << endl;
         cout << endl;
@@ -261,7 +261,7 @@ void BalanceManager::showBalanceForSelectedPeriod(vector <Income> incomes, vecto
 
     for (int i = 0; i < expensesForSelectedPeriod.size(); i++)
     {
-        cout << "Data: " << ancillaryMethods.convertDateFromIntToString(expensesForSelectedPeriod[i].getDate()) << endl;
+        cout << "Data: " << datesManager.convertDateFromIntToString(expensesForSelectedPeriod[i].getDate()) << endl;
         cout << "Opis: " << expensesForSelectedPeriod[i].getItem() << endl;
         cout << "Kwota: " << fixed << setprecision(2) << atof(expensesForSelectedPeriod[i].getAmount().c_str()) << endl;
         cout << endl;

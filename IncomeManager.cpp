@@ -45,7 +45,7 @@ Income IncomeManager::enterNewIncomeData()
         cin.clear();
         cin.sync();
 
-        dateString = ancillaryMethods.getSingleLine();
+        dateString = AncillaryMethods::getSingleLine();
 
         while(datesManager.checkDate(dateString)==0)
         {
@@ -62,14 +62,14 @@ Income IncomeManager::enterNewIncomeData()
     cin.clear();
     cin.sync();
     cout << "Podaj zrodlo przychodu: ";
-    item = ancillaryMethods.getSingleLine();
+    item = AncillaryMethods::getSingleLine();
     income.setItem(item);
 
 
     cin.clear();
     cin.sync();
     cout << "Podaj kwote przychodu: ";
-    amount = ancillaryMethods.getSingleLine();
+    amount = AncillaryMethods::getSingleLine();
     amount = convertAmount(amount);
     income.setAmount(amount);
 

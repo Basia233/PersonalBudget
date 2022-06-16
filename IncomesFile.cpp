@@ -3,7 +3,7 @@
 void IncomesFile::addIncomeToFile(Income income)
 {
     CMarkup xml;
-    string date = ancillaryMethods.convertDateFromIntToString(income.getDate());
+    string date = datesManager.convertDateFromIntToString(income.getDate());
 
     bool fileExsist = xml.Load("Incomes.xml");
 
@@ -57,7 +57,7 @@ vector <Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int idOfLoggedInU
                 xml.FindElem("IncomeId");
                 income.setTransactionId(atoi(xml.GetData().c_str()));
                 xml.FindElem("Date");
-                date = ancillaryMethods.convertDateFromStringToInt(xml.GetData());
+                date = datesManager.convertDateFromStringToInt(xml.GetData());
                 income.setDate(date);
                 xml.FindElem("Item");
                 income.setItem(xml.GetData());

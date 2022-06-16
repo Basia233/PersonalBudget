@@ -16,9 +16,9 @@ int DatesManager::getCurrentDate()
     string yearString;
     string currentDate = " ";
 
-    dayString = ancillaryMethods.intToStringConversion(day);
-    monthString = ancillaryMethods.intToStringConversion(month);
-    yearString = ancillaryMethods.intToStringConversion(year);
+    dayString = AncillaryMethods::intToStringConversion(day);
+    monthString = AncillaryMethods::intToStringConversion(month);
+    yearString = AncillaryMethods::intToStringConversion(year);
 
     if (day < 10)
     {
@@ -59,9 +59,9 @@ bool DatesManager::checkMaxDate(string enteredDate)
     int currentYear = st.wYear;
     int lastDayOfMonth = getNumberOfDaysOfMonth(currentMonth, currentYear);
 
-    string year = ancillaryMethods.intToStringConversion(currentYear);
-    string month = ancillaryMethods.intToStringConversion(currentMonth);
-    string day = ancillaryMethods.intToStringConversion(lastDayOfMonth);
+    string year = AncillaryMethods::intToStringConversion(currentYear);
+    string month = AncillaryMethods::intToStringConversion(currentMonth);
+    string day = AncillaryMethods::intToStringConversion(lastDayOfMonth);
 
     if (currentMonth < 10)
     {
@@ -177,7 +177,7 @@ int DatesManager::getDateOfFirstDayOfCurrentMonth()
 
 
     currentDate = getCurrentDate();
-    currentStringDate = ancillaryMethods.intToStringConversion(currentDate);
+    currentStringDate = AncillaryMethods::intToStringConversion(currentDate);
 
     firstDayOfCurrentMonth = currentStringDate.replace(6, 2, "01");
 
@@ -195,9 +195,9 @@ int DatesManager::getDateOfLastDayOfCurrentMonth()
     int currentYear = st.wYear;
     int lastDayOfMonth = getNumberOfDaysOfMonth(currentMonth, currentYear);
 
-    string year = ancillaryMethods.intToStringConversion(currentYear);
-    string month = ancillaryMethods.intToStringConversion(currentMonth);
-    string day = ancillaryMethods.intToStringConversion(lastDayOfMonth);
+    string year = AncillaryMethods::intToStringConversion(currentYear);
+    string month = AncillaryMethods::intToStringConversion(currentMonth);
+    string day = AncillaryMethods::intToStringConversion(lastDayOfMonth);
 
     if (currentMonth < 10)
     {
@@ -220,7 +220,7 @@ int DatesManager::getDateOfFirstDayOfPreviousMonth()
    string firstDayOfPreviousMonth = "";
 
     dateOfLastDayOfPreviousMonth = getDateOfLastDayOfPreviousMonth();
-    dateToString = ancillaryMethods.intToStringConversion(dateOfLastDayOfPreviousMonth);
+    dateToString = AncillaryMethods::intToStringConversion(dateOfLastDayOfPreviousMonth);
 
     firstDayOfPreviousMonth = dateToString.replace(6, 2, "01");
     dateOfFirstDayOfPreviousMonth = atoi(firstDayOfPreviousMonth.c_str());
@@ -251,26 +251,48 @@ int DatesManager::getDateOfLastDayOfPreviousMonth()
         previousYear = currentYear - 1;
         lastDayOfPreviousMonth = getNumberOfDaysOfMonth(previousMonth, previousYear);
 
-        previousMonthDateString = ancillaryMethods.intToStringConversion(previousYear)
-                                    + ancillaryMethods.intToStringConversion(previousMonth)
-                                    + ancillaryMethods.intToStringConversion(lastDayOfPreviousMonth);
+        previousMonthDateString = AncillaryMethods::intToStringConversion(previousYear)
+                                    + AncillaryMethods::intToStringConversion(previousMonth)
+                                    + AncillaryMethods::intToStringConversion(lastDayOfPreviousMonth);
     }
     else
     {
         previousMonth = currentMonth - 1;
-        previousMonthString = ancillaryMethods.intToStringConversion(previousMonth);
+        previousMonthString = AncillaryMethods::intToStringConversion(previousMonth);
         lastDayOfPreviousMonth = getNumberOfDaysOfMonth(previousMonth, currentYear);
 
         if (previousMonth < 10)
         {
             previousMonthString = "0" + previousMonthString;
         }
-        previousMonthDateString = ancillaryMethods.intToStringConversion(currentYear)
+        previousMonthDateString = AncillaryMethods::intToStringConversion(currentYear)
                                     + previousMonthString
-                                    + ancillaryMethods.intToStringConversion(lastDayOfPreviousMonth);
+                                    + AncillaryMethods::intToStringConversion(lastDayOfPreviousMonth);
     }
 
     int dateOfLastDayOfPreviousMonth = atoi(previousMonthDateString.c_str());
 
     return dateOfLastDayOfPreviousMonth;
+}
+
+
+string DatesManager::convertDateFromIntToString(int number)
+{
+    string stringDate = AncillaryMethods::intToStringConversion(number);
+    stringDate.insert(4,"-");
+    stringDate.insert(7,"-");
+
+    return stringDate;
+}
+
+
+int DatesManager::convertDateFromStringToInt(string stringDate)
+{
+    int intDate = 0;
+    stringDate.erase(4,1);
+    stringDate.erase(6,1);
+
+    intDate = AncillaryMethods::stringToIntConversion(stringDate);
+
+    return intDate;
 }
