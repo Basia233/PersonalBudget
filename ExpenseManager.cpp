@@ -5,24 +5,24 @@ using namespace std;
 
 void ExpenseManager::addNewExpense()
 {
-    Expense expense = enterNewExpenseData();
+    Finances finances = enterNewExpenseData();
 
-    expenses.push_back(expense);
+    expenses.push_back(finances);
 
-    expensesFile.addExpenseToFile(expense);
+    expensesFile.addExpenseToFile(finances);
 
     cout << endl << "Wydatek zostal dodany" << endl << endl;
     system("pause");
 }
 
 
-Expense ExpenseManager::enterNewExpenseData()
+Finances ExpenseManager::enterNewExpenseData()
 {
-    Expense expense;
+    Finances finances;
 
-    expense.setUserId(ID_OF_LOGGED_IN_USER);
+    finances.setUserId(ID_OF_LOGGED_IN_USER);
 
-    expense.setTransactionId(expensesFile.getIdOfLastExpense() + 1);
+    finances.setTransactionId(expensesFile.getIdOfLastExpense() + 1);
 
 
     int date = 0;
@@ -37,7 +37,7 @@ Expense ExpenseManager::enterNewExpenseData()
 
     if (choice == 't')
     {
-        expense.setDate(datesManager.getCurrentDate());
+        finances.setDate(datesManager.getCurrentDate());
     }
     else
     {
@@ -55,7 +55,7 @@ Expense ExpenseManager::enterNewExpenseData()
         }
 
         date = atoi(datesManager.addZeroToMonthAndDay(dateString).c_str());
-        expense.setDate(date);
+        finances.setDate(date);
     }
 
 
@@ -63,7 +63,7 @@ Expense ExpenseManager::enterNewExpenseData()
     cin.sync();
     cout << "Podaj powod wydatku: ";
     item = AncillaryMethods::getSingleLine();
-    expense.setItem(item);
+    finances.setItem(item);
 
 
     cin.clear();
@@ -71,9 +71,9 @@ Expense ExpenseManager::enterNewExpenseData()
     cout << "Podaj kwote wydatku: ";
     amount = AncillaryMethods::getSingleLine();
     amount = convertAmount(amount);
-    expense.setAmount(amount);
+    finances.setAmount(amount);
 
-    return expense;
+    return finances; // obiekt
 }
 
 
@@ -95,7 +95,7 @@ int ExpenseManager::getLoggedInUserId()
 }
 
 
-vector <Expense> ExpenseManager::getExpensesOfLoggedInUser()
+vector <Finances> ExpenseManager::getExpensesOfLoggedInUser()
 {
     return expenses;
 }

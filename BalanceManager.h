@@ -5,8 +5,7 @@
 #include <vector>
 #include <iomanip>
 #include "Markup.h"
-#include "Income.h"
-#include "Expense.h"
+#include "Finances.h"
 #include "DatesManager.h"
 #include "AncillaryMethods.h"
 
@@ -18,9 +17,9 @@ class BalanceManager
     DatesManager datesManager;
 
 public:
-    void showBalanceForCurrentMonth(vector <Income> incomes, vector <Expense> expenses);
-    void showBalanceForPreviousMonth(vector <Income> incomes, vector <Expense> expenses);
-    void showBalanceForSelectedPeriod(vector <Income> incomes, vector <Expense> expenses);
+    void showBalanceForCurrentMonth(vector <Finances> incomes, vector <Finances> expenses);
+    void showBalanceForPreviousMonth(vector <Finances> incomes, vector <Finances> expenses);
+    void showBalanceForSelectedPeriod(vector <Finances> incomes, vector <Finances> expenses);
 
 };
 

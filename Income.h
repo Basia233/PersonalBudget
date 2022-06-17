@@ -1,4 +1,4 @@
-#ifndef INCOME_H
+/*#ifndef INCOME_H
 #define INCOME_H
 
 #include <iostream>
@@ -15,3 +15,4 @@ class Income : public Finances
 };
 
 #endif
+*/

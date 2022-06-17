@@ -7,7 +7,7 @@
 #include <fstream>
 #include <sstream> // konwersja int na string
 
-#include "Expense.h"
+#include "Finances.h"
 #include "ExpensesFile.h"
 #include "DatesManager.h"
 #include "AncillaryMethods.h"
@@ -17,11 +17,11 @@ using namespace std;
 class ExpenseManager
 {
     const int ID_OF_LOGGED_IN_USER;
-    vector <Expense> expenses;
+    vector <Finances> expenses;
     ExpensesFile expensesFile;
     DatesManager datesManager;
 
-    Expense enterNewExpenseData();
+    Finances enterNewExpenseData();
     int getNewExpenseId();
 
 public:
@@ -35,7 +35,7 @@ public:
     void addNewExpense();
     int getLoggedInUserId();
     string convertAmount(string amount);
-    vector <Expense> getExpensesOfLoggedInUser();
+    vector <Finances> getExpensesOfLoggedInUser();
 
 
 };

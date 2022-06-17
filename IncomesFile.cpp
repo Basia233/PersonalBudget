@@ -1,9 +1,9 @@
 #include "IncomesFile.h"
 
-void IncomesFile::addIncomeToFile(Income income)
+void IncomesFile::addIncomeToFile(Finances finances)
 {
     CMarkup xml;
-    string date = datesManager.convertDateFromIntToString(income.getDate());
+    string date = datesManager.convertDateFromIntToString(finances.getDate());
 
     bool fileExsist = xml.Load("Incomes.xml");
 
@@ -17,11 +17,11 @@ void IncomesFile::addIncomeToFile(Income income)
     xml.IntoElem();
     xml.AddElem("Income");
     xml.IntoElem();
-    xml.AddElem("IncomeId", income.getTransactionId());
-    xml.AddElem("UserID", income.getUserId());
+    xml.AddElem("IncomeId", finances.getTransactionId());
+    xml.AddElem("UserID", finances.getUserId());
     xml.AddElem("Date", date);
-    xml.AddElem("Item", income.getItem());
-    xml.AddElem("Amount", income.getAmount());
+    xml.AddElem("Item", finances.getItem());
+    xml.AddElem("Amount", finances.getAmount());
 
     xml.Save("Incomes.xml");
 
@@ -30,10 +30,10 @@ void IncomesFile::addIncomeToFile(Income income)
 }
 
 
-vector <Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int idOfLoggedInUser)
+vector <Finances> IncomesFile::loadIncomesOfLoggedInUserFromFile(int idOfLoggedInUser)
 {
-    Income income;
-    vector <Income> incomes;
+    Finances finances;
+    vector <Finances> incomes;
     CMarkup xml;
     int userIdInFile, date;
 
@@ -53,24 +53,25 @@ vector <Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int idOfLoggedInU
 
             if (idOfLoggedInUser == userIdInFile)
             {
-                income.setUserId(atoi(xml.GetData().c_str()));
+                finances.setUserId(atoi(xml.GetData().c_str()));
                 xml.FindElem("IncomeId");
-                income.setTransactionId(atoi(xml.GetData().c_str()));
+                finances.setTransactionId(atoi(xml.GetData().c_str()));
                 xml.FindElem("Date");
                 date = datesManager.convertDateFromStringToInt(xml.GetData());
-                income.setDate(date);
+                finances.setDate(date);
                 xml.FindElem("Item");
-                income.setItem(xml.GetData());
+                finances.setItem(xml.GetData());
                 xml.FindElem("Amount");
-                income.setAmount(xml.GetData());
+                finances.setAmount(xml.GetData());
 
-                incomes.push_back(income);
+                incomes.push_back(finances);
             }
 
             xml.OutOfElem();
             idOfLastIncome++;
         }
     }
+
     return incomes;
 }
 

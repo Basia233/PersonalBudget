@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "Markup.h"
-#include "Expense.h"
+#include "Finances.h"
 #include "DatesManager.h"
 #include "XMLFile.h"
 
@@ -23,10 +23,10 @@ public:
         idOfLastExpense = 0;
     };
 
-    void addExpenseToFile(Expense expense);
+    void addExpenseToFile(Finances finances);
     int getIdOfLastExpense();
 
-    vector <Expense> loadExpensesOfLoggedInUserFromFile(int idOfLoggedInUser);
+    vector <Finances> loadExpensesOfLoggedInUserFromFile(int idOfLoggedInUser);
 
 };
 

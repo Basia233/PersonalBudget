@@ -1,4 +1,4 @@
-#ifndef EXPENSE_H
+/*#ifndef EXPENSE_H
 #define EXPENSE_H
 
 #include <iostream>
@@ -15,3 +15,4 @@ class Expense : public Finances
 };
 
 #endif
+*/

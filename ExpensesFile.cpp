@@ -1,9 +1,9 @@
 #include "ExpensesFile.h"
 
-void ExpensesFile::addExpenseToFile(Expense expense)
+void ExpensesFile::addExpenseToFile(Finances finances)
 {
     CMarkup xml;
-    string date = datesManager.convertDateFromIntToString(expense.getDate());
+    string date = datesManager.convertDateFromIntToString(finances.getDate());
 
     bool fileExsist = xml.Load("Expenses.xml");
 
@@ -17,11 +17,11 @@ void ExpensesFile::addExpenseToFile(Expense expense)
     xml.IntoElem(); // ustawia ten element jako glowny, mozna dodac cos wewnatrz
     xml.AddElem("Expense"); // dodaje element
     xml.IntoElem();
-    xml.AddElem("ExpenseId", expense.getTransactionId());
-    xml.AddElem("UserID", expense.getUserId());
+    xml.AddElem("ExpenseId", finances.getTransactionId());
+    xml.AddElem("UserID", finances.getUserId());
     xml.AddElem("Date", date);
-    xml.AddElem("Item", expense.getItem());
-    xml.AddElem("Amount", expense.getAmount());
+    xml.AddElem("Item", finances.getItem());
+    xml.AddElem("Amount", finances.getAmount());
 
     xml.Save("Expenses.xml");
 
@@ -30,10 +30,10 @@ void ExpensesFile::addExpenseToFile(Expense expense)
 }
 
 
-vector <Expense> ExpensesFile::loadExpensesOfLoggedInUserFromFile(int idOfLoggedInUser)
+vector <Finances> ExpensesFile::loadExpensesOfLoggedInUserFromFile(int idOfLoggedInUser)
 {
-    Expense expense;
-    vector <Expense> expenses;
+    Finances finances;
+    vector <Finances> expenses;
     CMarkup xml;
     int userIdInFile, date;
 
@@ -53,24 +53,25 @@ vector <Expense> ExpensesFile::loadExpensesOfLoggedInUserFromFile(int idOfLogged
 
             if (idOfLoggedInUser == userIdInFile)
             {
-                expense.setUserId(atoi(xml.GetData().c_str()));
+                finances.setUserId(atoi(xml.GetData().c_str()));
                 xml.FindElem("ExpenseId");
-                expense.setTransactionId(atoi(xml.GetData().c_str()));
+                finances.setTransactionId(atoi(xml.GetData().c_str()));
                 xml.FindElem("Date");
                 date = datesManager.convertDateFromStringToInt(xml.GetData());
-                expense.setDate(date);
+                finances.setDate(date);
                 xml.FindElem("Item");
-                expense.setItem(xml.GetData());
+                finances.setItem(xml.GetData());
                 xml.FindElem("Amount");
-                expense.setAmount(xml.GetData());
+                finances.setAmount(xml.GetData());
 
-                expenses.push_back(expense);
+                expenses.push_back(finances);
             }
 
             xml.OutOfElem();
             idOfLastExpense++;
         }
     }
+
     return expenses;
 }
 
