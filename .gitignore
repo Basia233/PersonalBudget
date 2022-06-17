@@ -1,0 +1,10 @@
+Income.h
+Income.cpp
+Expense.h
+Expense.cpp
+bin/
+obj/
+PersonalBudget.cbp
+PersonalBudget.depend
+PersonalBudget.layout
+*.xml

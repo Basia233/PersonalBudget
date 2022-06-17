@@ -139,7 +139,7 @@ void BalanceManager::showBalanceForPreviousMonth(vector <Finances> incomes, vect
     {
         if(expenses[i].getDate() >= dateOfFirstDayOfPreviousMonth && expenses[i].getDate() <= dateOfLastDayOfPreviousMonth)
         {
-            expensesForPreviousMonth.push_back(expenses[i]);
+            expensesForPreviousMonth.push_back(expenses[i]
             totalExpenses += atof(expenses[i].getAmount().c_str());
         }
     }
